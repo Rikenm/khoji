@@ -8,6 +8,7 @@ import { setAuthorizationToken, setCurrentUser } from '../store/actions/auth';
 // import jwtDecode from "jwt-decode";
 
 
+
 const store = configureStore()
 
 if(localStorage.accessToken && localStorage.refreshToken && localStorage.userInfo){
@@ -36,6 +37,7 @@ const App = () =>{
         <div className="onBoarding"> 
            
             <Main/>
+            
         </div>
      </Router>
     </Provider>

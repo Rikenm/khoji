@@ -1,9 +1,9 @@
 import React,{Component} from "react"
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
-import CardContent from '@material-ui/core/CardContent';
-import Card from '@material-ui/core/Card';
+
 import {Link} from "react-router-dom";
+
 
 
 
@@ -26,7 +26,9 @@ const styles = theme => ({
 class AuthForm extends Component{
     constructor(props){
         super(props)
-
+  
+        
+        
         this.state = {
             userEmail:"",
             secret: "asdf",
@@ -38,6 +40,11 @@ class AuthForm extends Component{
 
         }//add few things later
     }
+
+    
+
+
+    
 
     handleChange = e => {
             this.setState({
@@ -54,11 +61,11 @@ class AuthForm extends Component{
         .then(()=>{
             // take to the homepage
 
-            console.log("loggy",this.props)
-
             this.props.history.push("/")
             //redirect
         }).catch(()=>{
+
+            console.log("hellof from the catch")
             return
         })
 
@@ -101,6 +108,7 @@ class AuthForm extends Component{
                                         type="text"
                                        
                                         margin="normal"
+                                        
                                 />
 
                             </div>
@@ -189,7 +197,8 @@ class AuthForm extends Component{
 
                     </form>
                 
-                            {errors.message && <div>{errors.message}</div>}
+                  
+                   
                 
                 </div>
             </div>

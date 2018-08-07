@@ -9,15 +9,21 @@ import {removeError} from "../store/actions/error";
 import {firstState} from "../store/actions/checkFirstTime"
 import withAuth from "../HOC/withAuth"
 // import {ListingForm} from "../" //where is listing
+import  Snackbar from "../util/snackbar/snackbar"
 
 
 // routing logic
 const Main = props => {
     const {authUser,errors, removeError, currentUser,whichState,firstState} = props
 
+    console.log("main's error",errors)
+
     
 return(
     // <div className = "container">
+
+
+    
      <Switch>
             <Route exact path="/" 
                 render= { props => 
@@ -33,19 +39,38 @@ return(
             />
             <Route exact path="/signup" 
                 render= { props => 
+                    <div>
                     <AuthForm 
                     errors ={errors}
                     removeError = {removeError}
-                    onAuth = {authUser} buttonText="Sign up" heading="join khoji"{...props} signUp/>
+                    onAuth = {authUser} buttonText="Sign up" heading="join khoji"{...props} signUp
+                    
+                    />
+                     <div> { 
+                       
+                       errors.message !== null? <Snackbar message= {errors.message}  />:<div/>
+
+                       
+                
+                    }</div>
+                    
+                    </div>
                  }
             />
 
             <Route exact path="/login" 
                 render= { props => 
+                      <div>
                        <AuthForm 
                        errors ={errors}
                        removeError = {removeError}
                        onAuth = {authUser} buttonText="Log in" heading="Welcome Back"{...props}/>
+                       <div> { 
+                       
+                       errors.message !== null? <Snackbar message= {errors.message}  />:<div/>
+
+                    }</div>
+                       </div>
                  }
             />
 
@@ -53,8 +78,14 @@ return(
             
             />
 
+           
+
             
     </Switch>
+
+    
+
+   
 
    
 )

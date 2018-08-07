@@ -1,9 +1,6 @@
 import React from "react";
-
-import {Link} from "react-router-dom";
 import Navbar from "../containers/Navbar";
-import Hidden from "@material-ui/core/Hidden";
-import {firstState} from "../store/actions/checkFirstTime"
+
 
 
 
@@ -33,7 +30,7 @@ const Homepage = (props) => {
 
 const clicked = () =>{
 
-        console.log("clicked")
+  props.history.push("/login")
 }        
 
 if (currentUser.isAuthenticated){

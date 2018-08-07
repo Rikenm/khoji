@@ -57,8 +57,9 @@ export function authUser(type,userData){
                 dispatch(removeError())
                 resolve();
             }).catch(err =>{
-                    console.log("error",err)
-                    dispatch(addError(err.message)) //error
+                    
+
+                    dispatch(addError(err.message?err.message:err.msg)) //error // make biken change thid to message
                     reject()
 
             })
