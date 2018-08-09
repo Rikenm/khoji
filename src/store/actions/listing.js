@@ -2,7 +2,7 @@ import {apiCall} from "../../services/api"
 import {addError} from "./error";
 import {LOAD_LISTINGS,REMOVE_LISTING} from "../actionTypes"
 
-export const loadListings = Lists => ({
+export const loadListings = listings => ({
     type: LOAD_LISTINGS,
     listings
 })
@@ -10,16 +10,34 @@ export const loadListings = Lists => ({
 
 //api request
 
-export const fetchListings = () =>{
+export const fetchListings = (whichstate,category,page) =>{
     return dispatch =>{
-            return apiCall("GET","/api/")
+            return apiCall("GET",`/api/post/{$whichstate}/{$category}/{$page}`)
             .then((res)=>{
                     dispatch(loadListings(res))
                     
 
             }).catch(err=>{
-                addError(err.message)
+                dispatch(addError(err.message))
             })
     }
+
+}
+
+export const newPost = (text) =>{
+ 
+    return (dispatch) =>{
+         //new post posting   
+        return apiCall("post","/api/post",{})
+        .then(res => {
+
+        })
+        .catch(err => {
+            dispatch(addError(err.message))  
+        })
+
+    }
+
+
 
 }

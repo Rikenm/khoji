@@ -9,7 +9,8 @@ import {removeError} from "../store/actions/error";
 import {firstState} from "../store/actions/checkFirstTime"
 import withAuth from "../HOC/withAuth"
 // import {ListingForm} from "../" //where is listing
-import  Snackbar from "../util/snackbar/snackbar"
+import  Snackbar from "../util/snackbar/snackbar";
+import PostForm from "../components/PostForm";
 
 
 // routing logic
@@ -77,6 +78,12 @@ return(
             {/* <Route exact path ="/createlisting" component={ListingForm} */}
             
             />
+          
+            <Route exact path="/newPost"
+            // need Auth HOC
+            component={withAuth(PostForm)
+            }
+             />
 
            
 

@@ -1,5 +1,5 @@
 import {apiCall, setTokenHeader} from "../../services/api";
-
+import { Redirect } from 'react-router-dom'
 import {SET_CURRENT_USER} from "../actionTypes";
 import {addError, removeError} from "./error";
 
@@ -26,7 +26,7 @@ export function logout(){
         localStorage.clear();
         setAuthorizationToken(false)
         dispatch(setCurrentUser({}))
-
+       
     }
 
 

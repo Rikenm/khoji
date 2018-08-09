@@ -9,13 +9,13 @@ export default function withAuth(ComponentToBeRendered){
         componentDidMount(){
 
             if(this.props.isAuthenticated === false){
-                this.props.history.push("/signin")
+                this.props.history.push("/login")
             }
         }
 
         componentWillUpdate(){
             if(this.props.isAuthenticated === false){
-                this.props.history.push("/signin")
+                this.props.history.push("/login")
             }
 
         }

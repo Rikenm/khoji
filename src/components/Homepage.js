@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from "../containers/Navbar";
 
+import {CategoryList} from "../containers/category"
+
 
 
 
@@ -40,14 +42,10 @@ if (currentUser.isAuthenticated){
 return(     
                 <div >
                        <Navbar /> 
-                        <h6>You are currently checking listings at: {localStorage.getItem("first_visit")?localStorage.getItem("first_visit"):"N/A"}
-                           
-
-                        </h6>
-
-                        <h5>{currentUser.user.name}</h5> 
-                        
-                        
+                       <div className="stateandtable">
+                        <h5 className="stateSelected">You are currently checking listings at: {localStorage.getItem("first_visit")?localStorage.getItem("first_visit"):"N/A"}</h5>
+                        <CategoryList {...props}/>
+                      </div>
                         </div>       
 )
 
@@ -58,6 +56,13 @@ return(
   return(
     <div>
      <Navbar notLoggedIn /> 
+ 
+
+
+       <div className="stateandtable">
+     <h5 className="stateSelected">You are currently checking listings at: {localStorage.getItem("first_visit")?localStorage.getItem("first_visit"):"N/A"}</h5>
+     <CategoryList {...props}/>
+     </div>
      
     </div>
   )

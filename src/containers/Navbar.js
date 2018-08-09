@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
-import {logout} from "../store/actions/auth"
+import {logout} from "../store/actions/auth";
+import "../style/categoryStyling.css"
 
 class NavBar extends Component{
 
@@ -9,13 +10,14 @@ class NavBar extends Component{
       e.preventDefault()
       console.log("logging off")
       this.props.logout()
+      
   }  
 
   render(){
     console.log("after this")
     console.log(this.props)
     return (
-       <nav className="navbar navbar-expand">
+       <nav className="navbar navbar-expand fixed-top">
         <div className = "container-fluid"> 
             <Link to = "/" className="navbar-brand">
                  <img src="" alt="Khoji"/>
