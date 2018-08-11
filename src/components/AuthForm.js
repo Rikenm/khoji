@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 
 import {Link} from "react-router-dom";
+import Facebook from "../containers/Facebook";
 
 
 
@@ -26,6 +27,9 @@ const styles = theme => ({
 class AuthForm extends Component{
     constructor(props){
         super(props)
+
+
+        
   
         
         
@@ -34,14 +38,34 @@ class AuthForm extends Component{
             secret: "asdf",
             username:"",
             password:"",
-            profileImageUrl:""
+            profileImageUrl:"",
+            userType: "custom"
             
 
 
         }//add few things later
     }
 
-    
+   facebookClick = (facebookdata) =>{
+
+
+
+
+        this.props.onAuth("user", {...facebookdata,  userType: "facebook"})
+        .then(()=>{
+            // take to the homepage
+
+            this.props.history.push("/")
+            //redirect
+        }).catch(()=>{
+
+            console.log("hello from the catch")
+            return
+        })
+
+
+
+    }
 
 
     
@@ -76,6 +100,8 @@ class AuthForm extends Component{
     render(){
 
         
+
+        
         const {email, username, password} = this.state
         const {heading, buttonText, signUp,errors, history,removeError} = this.props
         
@@ -94,7 +120,7 @@ class AuthForm extends Component{
                 
                             <form onSubmit={this.handleSubmit} noValidate autoComplete="off" >
                             
-
+                              
                             
                              <div className="firstTextFieldAuthForm">
 
@@ -139,9 +165,19 @@ class AuthForm extends Component{
                                     </button>
                                     <Link className="linktoSignUp" to="/signup">Sign Up</Link>  
 
-                            <button className="facebookButton">
+                            {/* <button
+                           
+                            className="facebookButton">
                                         Facebook
-                            </button> 
+                            </button>  */}
+
+                            <div className="facebookButton">
+                            
+                                <Facebook  facebookClick = {this.facebookClick}/>
+                            </div>
+
+                               
+
                          <br/>
                          </div>
                         )} 
