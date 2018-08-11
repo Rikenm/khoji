@@ -29,6 +29,8 @@ class AuthForm extends Component{
         super(props)
 
 
+
+
         
   
         
@@ -44,24 +46,52 @@ class AuthForm extends Component{
 
 
         }//add few things later
+
+
+        
     }
 
    facebookClick = (facebookdata) =>{
+       
+
+      
+        
+
+        if (!facebookdata.error){
+
+           const {name,accessToken,email,id}=facebookdata
+
+           console.log("yo",name,accessToken,email,id)
+
+        const newObject ={name: name,
+                    accessAuthToken: accessToken,
+                    email: email,
+                    userType: "facebook",
+                    username: name.split(" ")[0]+id
+
+        
+                    }
 
 
 
 
-        this.props.onAuth("user", {...facebookdata,  userType: "facebook"})
+        this.props.onAuth("user", newObject)
         .then(()=>{
             // take to the homepage
 
             this.props.history.push("/")
             //redirect
         }).catch(()=>{
-
-            console.log("hello from the catch")
             return
         })
+
+        }else{
+                this.props.addError("Facebook Error")
+               
+                return
+                
+
+        }
 
 
 
@@ -103,11 +133,12 @@ class AuthForm extends Component{
 
         
         const {email, username, password} = this.state
-        const {heading, buttonText, signUp,errors, history,removeError} = this.props
+        const {heading, buttonText, signUp,errors, history,removeError, addError} = this.props
         
         
         history.listen(()=>{
         removeError()
+        
         }) 
 
 
@@ -173,7 +204,7 @@ class AuthForm extends Component{
 
                             <div className="facebookButton">
                             
-                                <Facebook  facebookClick = {this.facebookClick}/>
+                                <Facebook  addError={addError} facebookClick = {this.facebookClick}/>
                             </div>
 
                                
@@ -216,8 +247,8 @@ class AuthForm extends Component{
 
                                             <button 
                                             type="button"
-                                            className="signupButton">
-                                            onClick = {this.handeleSubmit}
+                                            className="signupButton"
+                                            onClick = {this.handeleSubmit}>
                                         {this.props.buttonText}
                                     </button>
 

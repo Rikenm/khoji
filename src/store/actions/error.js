@@ -9,3 +9,26 @@ error
 export const removeError = () => ({
     type: REMOVE_ERROR
 })
+
+
+export function facebookError() {
+
+    return dispatch => {
+
+
+        dispatch(addError("Facebook Error"))
+    }
+
+
+}
+
+export function facebookremoveError() {
+
+    return dispatch => {
+
+
+        dispatch(removeError())
+    }
+
+
+}

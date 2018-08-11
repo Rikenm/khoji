@@ -21,7 +21,18 @@ export default class Facebook extends Component{
 
      componentClicked = () =>{
 
+        
+
      }   
+
+
+     onerror = (err) => {
+        
+
+        
+        this.props.addError("Facebook login error from inside")
+
+     }
 
 
      
@@ -36,10 +47,12 @@ export default class Facebook extends Component{
         }else{
             fbContent = (<FacebookLogin
                 appId="302220027200609"
-                autoLoad={true}
-                fields="first_name,email,id,"
+                autoLoad={false}
+                fields="name,email"
                 onClick={this.componentClicked}
-                callback={this.props.facebookClick} />)
+                callback={this.props.facebookClick} 
+                onFailure ={this.onerror}
+                />)
 
         }
 

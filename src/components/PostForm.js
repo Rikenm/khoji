@@ -15,6 +15,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import Navbar from "../containers/Navbar"
+import purple from '@material-ui/core/colors/purple';
 
 import "../style/postform.css"
 
@@ -31,18 +32,22 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 200
+    width: 200,
+    backgroundColor: purple[300]
   },
 
   formControl: {
     margin: theme.spacing.unit,
-    minWidth: 200
+    minWidth: 200,
+    color: purple[300]
   },
   actionsContainer: {
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
+    color: purple[300]
   },
   selectEmpty: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
+    color: purple[300]
   }
 });
 
@@ -60,7 +65,7 @@ const NUMBER_ITEMS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 class VerticalLinearStepper extends React.Component {
   state = {
     activeStep: 0,
-    value: "please type something"
+    value: ""
   };
 
   handletextchange = event => {
@@ -162,6 +167,7 @@ class VerticalLinearStepper extends React.Component {
         return (
           <div>
             <textarea
+              placeholder="Please type here..."
               name="value"
               value={this.state.value}
               rows="12"

@@ -5,7 +5,7 @@ import Homepage from "../components/Homepage";
 import AuthForm from "../components/AuthForm";
 import Navbar from "./Navbar"
 import {authUser} from "../store/actions/auth";
-import {removeError} from "../store/actions/error";
+import {removeError, addError,facebookError,facebookremoveError} from "../store/actions/error";
 import {firstState} from "../store/actions/checkFirstTime"
 import withAuth from "../HOC/withAuth"
 // import {ListingForm} from "../" //where is listing
@@ -15,7 +15,7 @@ import PostForm from "../components/PostForm";
 
 // routing logic
 const Main = props => {
-    const {authUser,errors, removeError, currentUser,whichState,firstState} = props
+    const {authUser,errors, removeError, currentUser,whichState,firstState,facebookError} = props
 
     console.log("main's error",errors)
 
@@ -44,6 +44,8 @@ return(
                     <AuthForm 
                     errors ={errors}
                     removeError = {removeError}
+                    addError = {facebookError}
+                    facebookremoveError = {facebookremoveError}
                     onAuth = {authUser} buttonText="Sign up" heading="join khoji"{...props} signUp
                     
                     />
@@ -65,6 +67,8 @@ return(
                        <AuthForm 
                        errors ={errors}
                        removeError = {removeError}
+                       addError = {facebookError}
+                       facebookremoveError = {facebookremoveError}
                        onAuth = {authUser} buttonText="Log in" heading="Welcome Back"{...props}/>
                        <div> { 
                        
@@ -127,4 +131,4 @@ function mapStateToProps(state){
 
 
 
-export default withRouter(connect(mapStateToProps,{firstState,removeError,authUser})(Main))
+export default withRouter(connect(mapStateToProps,{firstState,removeError,authUser,facebookError,facebookremoveError})(Main))

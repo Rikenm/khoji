@@ -40,7 +40,7 @@ export function authUser(type,userData){
         console.log("datatoserver",userData)
         return new Promise((resolve,reject)=>{  // returning promise
 
-            return apiCall("post",`http://localhost:5000/api/v1/${type}`,userData).then(
+            return apiCall("post",`http://localhost:6011/api/v1/${type}`,userData).then(
                 res=>{
 
                 
