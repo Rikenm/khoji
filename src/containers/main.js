@@ -3,7 +3,7 @@ import {Switch, Route,withRouter,Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import Homepage from "../components/Homepage";
 import AuthForm from "../components/AuthForm";
-import Navbar from "./Navbar"
+
 import {authUser} from "../store/actions/auth";
 import {removeError, addError,facebookError,facebookremoveError} from "../store/actions/error";
 import {firstState} from "../store/actions/checkFirstTime"
@@ -11,6 +11,7 @@ import withAuth from "../HOC/withAuth"
 // import {ListingForm} from "../" //where is listing
 import  Snackbar from "../util/snackbar/snackbar";
 import PostForm from "../components/PostForm";
+import ListingListTimeLine from "../components/ListingListTimeLine"
 
 
 // routing logic
@@ -41,14 +42,17 @@ return(
             <Route exact path="/signup" 
                 render= { props => 
                     <div>
-                    <AuthForm 
+                   {currentUser.isAuthenticated === false ? <AuthForm 
                     errors ={errors}
                     removeError = {removeError}
                     addError = {facebookError}
                     facebookremoveError = {facebookremoveError}
                     onAuth = {authUser} buttonText="Sign up" heading="join khoji"{...props} signUp
+
+                 
                     
-                    />
+                    /> : props.history.push("/")
+                   }
                      <div> { 
                        
                        errors.message !== null? <Snackbar message= {errors.message}  />:<div/>
@@ -64,13 +68,20 @@ return(
             <Route exact path="/login" 
                 render= { props => 
                       <div>
+                          {currentUser.isAuthenticated === false ? 
                        <AuthForm 
                        errors ={errors}
                        removeError = {removeError}
                        addError = {facebookError}
                        facebookremoveError = {facebookremoveError}
                        onAuth = {authUser} buttonText="Log in" heading="Welcome Back"{...props}/>
-                       <div> { 
+                       : props.history.push("/")
+                   }     
+
+                       <div> 
+                       
+                       
+                       { 
                        
                        errors.message !== null? <Snackbar message= {errors.message}  />:<div/>
 
@@ -88,6 +99,9 @@ return(
             component={withAuth(PostForm)
             }
              />
+
+
+             <Route exact path ="/listing"    component={ListingListTimeLine}/>
 
            
 

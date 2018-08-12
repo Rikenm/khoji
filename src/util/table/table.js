@@ -35,9 +35,9 @@ const styles = theme => ({
 });
 
 let id = 0;
-function createData(name, calories, fat, carbs, protein) {
+function createData(name) {
   id += 1;
-  return { id, name, calories, fat, carbs, protein };
+  return { id, name};
 }
 
 const data = [
@@ -49,26 +49,31 @@ const data = [
 ];
 
 function CustomizedTable(props) {
-  const { classes } = props;
+  const { classes, data } = props;
+  
+  console.log(props,"aflsdlkj=====")
+
 
   const clicked = () => {
     console.log("clicked");
   };
 
   return (
+
+    
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <CustomTableCell>Dessert (100g serving)</CustomTableCell>
+            <CustomTableCell>{data.name}</CustomTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map(n => {
+          {data.subitems.map((n,i) => {
             return (
-              <TableRow className={classes.row} key={n.id}>
+              <TableRow className={classes.row} key={i}>
                 <CustomTableCell onClick={clicked} component="th" scope="row">
-                  {n.name}
+                  {n}
                 </CustomTableCell>
                 
               </TableRow>

@@ -1,0 +1,56 @@
+
+
+.encapsule {
+    text-align: center;
+    position: relative;
+    left: 100%;
+    width:100%;
+
+  }
+  
+  .save-button,
+  .delete-button {
+    display: inline;
+    font-style: normal;
+    font-weight:100;
+   
+    
+
+  }
+  
+  .save-button {
+    margin-right: 10%;
+    color: #0ED623;
+   ;
+    
+   
+   
+
+  }
+
+  .List{
+      width:100%
+  }
+
+  .delete-button {
+    color: #FF0000;
+    
+   
+  }
+
+
+  .list{
+      width:50%;
+      position: absolute;
+      top: 20%;
+      left: 5%;
+
+  }
+
+  
+
+  .ListItemSecondaryAction{
+
+    width: 100%
+  }
+  

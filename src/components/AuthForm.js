@@ -64,7 +64,7 @@ class AuthForm extends Component{
            console.log("yo",name,accessToken,email,id)
 
         const newObject ={name: name,
-                    accessAuthToken: accessToken,
+                    accessToken: accessToken,
                     email: email,
                     userType: "facebook",
                     username: name.split(" ")[0]+id

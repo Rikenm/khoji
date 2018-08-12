@@ -1,24 +1,27 @@
 import React from "react";
 import Navbar from "../containers/Navbar";
+import Popup from "react-popup";
 
+import "../style/popupstyling.css"
 import {CategoryList} from "../containers/category"
+import Alertregister from "../util/Alert/popuregister"
 
 
+const clicked2 = () => {
 
+  
+  Popup.plugins().prompt("", "Type your name", function(value) {
+    Popup.alert("You typed: " + value);
+  });
+
+};
 
 
 const Homepage = (props) => {
-  
-  
+
+  Alertregister()
+
   const {currentUser,whichState} = props
-
-  console.log("propsofHomepage", props)
-
-
-  
- 
-  
-
   const stateButtonClicked = () => {
     // if state is clicked
 
@@ -39,11 +42,18 @@ if (currentUser.isAuthenticated){
      // authtenticated
 
     
-return(     
+return(    
+  
+  
                 <div >
+                 
                        <Navbar /> 
+                       <Popup />
                        <div className="stateandtable">
-                        <h5 className="stateSelected">You are currently checking listings at: {localStorage.getItem("first_visit")?localStorage.getItem("first_visit"):"N/A"}</h5>
+                        <div className="stateSelected">
+                        <div className="block1">You are currently checking listings at: </div> 
+                        <div className="block2" onClick={clicked2}>{localStorage.getItem("first_visit")?localStorage.getItem("first_visit"):"N/A"}</div>
+                        </div>
                         <CategoryList {...props}/>
                       </div>
                         </div>       
@@ -55,12 +65,14 @@ return(
   //...
   return(
     <div>
-     <Navbar notLoggedIn /> 
+       
+     <Navbar  /> 
+     <Popup />
  
 
 
        <div className="stateandtable">
-     <h5 className="stateSelected">You are currently checking listings at: {localStorage.getItem("first_visit")?localStorage.getItem("first_visit"):"N/A"}</h5>
+       <h5 className="stateSelected">You are currently checking listings at:</h5> <div className="state-selected"onClick={clicked2}>{localStorage.getItem("first_visit")?localStorage.getItem("first_visit"):"N/A"}</div>
      <CategoryList {...props}/>
      </div>
      
