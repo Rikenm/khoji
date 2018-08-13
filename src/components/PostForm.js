@@ -78,9 +78,9 @@ class VerticalLinearStepper extends React.Component {
         return (
           <div>
           
-            <FormControl className={classes.formControl}>
+            <FormControl className={classes.formControl} color="secondary">
               <InputLabel htmlFor="age-simple">Category</InputLabel>
-              <Select
+              <Select color="secondary"
                 value={this.state.age}
                 onChange={this.handleChange}
                 name="age"
@@ -210,7 +210,7 @@ class VerticalLinearStepper extends React.Component {
       <div className={classes.root}>
         <Navbar/>
         <div className="container">
-        <Stepper activeStep={activeStep} orientation="vertical">
+        <Stepper activeStep={activeStep} orientation="vertical" color="secondary">
           {steps.map((label, index) => {
             return (
 

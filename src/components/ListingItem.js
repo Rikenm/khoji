@@ -8,15 +8,23 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import "../style/listitemstyle.css"
 
 
-const ListingItem = (date,text,username,title,location) => {
+const ListingItem = (date,id,username,title,location) => {
+
+    id =1112
 
     return(
         <ListItem className="List">
         <div>Jul 4 </div>
         <ListItemText
-          primary="Software Engineering"
+         
+           
           secondary={true ? "Somerville, Ma" : null}
-        />
+        >
+        <span >
+              <Link to= {`/post/${id}`} > "Software Engineering" </Link>
+          </span>
+
+        </ListItemText>
         <ListItemSecondaryAction className="ListItemSecondaryAction">
           <div className="encapsule">
             <h6 className="save-button">Save</h6>

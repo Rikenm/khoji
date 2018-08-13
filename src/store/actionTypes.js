@@ -4,3 +4,4 @@ export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const LOAD_LISTINGS = "LOAD_LISTINGS";
 export const REMOVE_LISTING = "REMOVE_LISTING";
 export const FIRST_STATE = "FIRST_STATE";
+export const LOAD_POST = "LOAD_POST";
