@@ -3,6 +3,10 @@
   ##Screen = 1281px to higher resolution desktops
 */
 
+
+#p_wrap {
+  white-space: pre-line;
+}
 @media (min-width: 1281px) {
 
     textarea {
@@ -16,6 +20,15 @@
         position: absolute;
 
       }
+
+      .post{
+
+        top: 10%;
+        left: 70%;
+        position: absolute;
+      }
+
+      
 
   
      

@@ -24,10 +24,9 @@ export function apiCall(method, path, data){
 
             return resolve(res.data)
         }).catch(err => {
-
-            console.log("reject",err)
-
-            return reject(err.response.data.error)
+             // fix this later
+             console.log("err",typeof err.response !== 'undefined',err.response)
+            return reject(typeof err.response !== 'undefined' ? err.response.data.error: "Error")
         })
     })
 

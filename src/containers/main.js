@@ -13,7 +13,7 @@ import  Snackbar from "../util/snackbar/snackbar";
 import PostForm from "../components/PostForm";
 import ListingListTimeLine from "../components/ListingListTimeLine"
 import  PostPage from "../components/postPage"
-
+import {NotFound} from "../components/NotFound"
 
 
 // routing logic
@@ -103,9 +103,15 @@ return(
              />
 
 
-             <Route exact path ="/listing"    component={ListingListTimeLine}/>
+             <Route exact path ="/listing"  {...props}  component={ListingListTimeLine}/>
 
              <Route exact path = "/post/:postid" component={PostPage}/>
+
+
+
+
+
+             <Route  component={NotFound} />
 
            
 

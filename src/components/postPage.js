@@ -8,6 +8,10 @@ import Navbar from "../containers/Navbar"
 const PostPage = props => {
    
     // const {title,description,name,address,contact,postid} = props
+
+    // <Redirect to="/404" />
+
+    //get the id from the param
     
 
     return(
@@ -16,7 +20,10 @@ const PostPage = props => {
        
           
             <Navbar/>
-            <Post/>
+
+            <Post /> { // pass id here
+                 
+            }
             
         
           

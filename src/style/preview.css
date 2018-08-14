@@ -1,0 +1,139 @@
+
+
+
+.preview{
+   
+    width: 60%;   
+    height: 500px;
+     top: 10%;
+     left: 60%; 
+      /* background-color: blue; */
+     position: absolute;
+     border-style: dotted;
+ 
+ }
+
+
+.preview-nav-bar{
+
+    width: 100%;
+    height: 9%;
+    top: 0%;
+    left: 0%;
+    
+    position: absolute;
+
+    
+    
+}
+
+.post{
+    width: 100%;
+    left: 0%;
+    top: 17%;
+    height: 83%;
+    position: absolute;
+    /* background-color: green; */
+
+
+}
+
+.title{
+    width:92%;
+    height: 10%;
+    left: 5%; 
+    font-size: 75%;
+    position: absolute;
+    
+    /* background-color: blueviolet; */
+    font-weight: 200;
+   
+    
+}
+
+.sidebar{
+
+    width: 20%;
+    position: absolute;
+    z-index: 1;
+    top: 10%;
+    left: 5%;
+    font-size: 80%;
+    height: 80%;
+    background: #eee;
+    overflow-x: hidden;
+    font-weight: bold;
+   
+}
+
+.name,.address,.contact{
+
+    padding: 15%;
+    /* background-color: chocolate; */
+}
+
+.body{
+
+    /* background-color: crimson; */
+    width: 70%;
+    height: 90%;
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    font-size: 80%;
+    font-weight: 300;
+    background-color: rgb(240,240,240,0.5);
+    overflow-x: hidden;
+    
+    white-space: pre-line;
+    
+}
+
+.name-value,.address-value,.contact-value{
+    font-weight: 100;
+
+}
+
+.address-value{
+    font-size: 80%;
+}
+
+.low-sidebar{
+    height: 90%;
+    /* background-color: crimson; */
+    
+}
+
+.btn-reply{
+    background: navy;
+    color: white;
+    border: none;
+    width: 60%;
+    height: 10%;
+    position: relative;
+    left: 20%;
+    top: 10%;
+    
+}
+
+.btn-save{
+
+    background: navy;
+    color: white;
+    border: none;
+    width: 50%;
+    height: 10%;
+    top: 20%;
+    position: relative;
+    left: 25%;
+    
+    z-index: 1;
+
+}
+
+
+
+
+
+
+

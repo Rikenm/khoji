@@ -69,11 +69,11 @@ function CustomizedTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.subitems.map((n,i) => {
+          {data.subitems.map((item,i) => {
             return (
               <TableRow className={classes.row} key={i}>
-                <CustomTableCell onClick={clicked} component="th" scope="row">
-                  {n}
+                <CustomTableCell onClick={clicked} component="th" scope="row" key={i}>
+                  {item.name}
                 </CustomTableCell>
                 
               </TableRow>

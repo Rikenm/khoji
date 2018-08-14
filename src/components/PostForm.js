@@ -18,6 +18,7 @@ import Navbar from "../containers/Navbar"
 import purple from '@material-ui/core/colors/purple';
 
 import "../style/postform.css"
+import Preview from "../containers/preview";
 
 
 
@@ -206,10 +207,19 @@ class VerticalLinearStepper extends React.Component {
     const steps = getSteps();
     const { activeStep } = this.state;
 
+    // textarea.addEventListener('keypress', function(e) {
+     
+    //   p_wrap.textContent = e.target.value
+    // })
+
     return (
       <div className={classes.root}>
         <Navbar/>
         <div className="container">
+        {/* <p id="p_wrap">{this.state.value}</p> */}
+
+        <Preview post={this.state.value} />
+
         <Stepper activeStep={activeStep} orientation="vertical" color="secondary">
           {steps.map((label, index) => {
             return (
@@ -252,6 +262,8 @@ class VerticalLinearStepper extends React.Component {
             </Button>
           </Paper>
         )}
+
+
       </div>
     );
   }

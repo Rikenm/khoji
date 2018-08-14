@@ -12,14 +12,15 @@ export const CategoryList = (props)=>{
     const table1Data =() =>({
 
         name: "Community",
-        subitems: ["Activities","Lost","Events","Artists","Volunteer"]
+        id: "",
+        subitems: [{name:"Activities",id:""},{name:"Lost",id:""},{name:"Events",id:""},{name:"Artists",id:""},{name:"Volunteer",id:""}]
     })
 
 
     const table2Data =() =>({
 
         name: "Services",
-        subitems: ["Mechanics","Tutor","Electronic Repair","Real Estate","Volunteer"]
+        subitems: [{name:"Mechanics",id:""},{name:"Tutor",id:""},{name:"Electronic Repair",id:""},{name:"Real Estate",id:""},{name:"Volunteer",id:""}]
     })
 
 
@@ -28,19 +29,19 @@ export const CategoryList = (props)=>{
     const table3Data =() =>({
 
         name: "Jobs",
-        subitems: ["IT","Software Engineering","Fast Food","Cashier","Nanny","Waiter","Government Jobs","Retail","Others"]
+        subitems: [{name:"IT",id:""},{name:"Software Engineering",id:""},{name:"Fast Food",id:""},{name:"Cashier",id:""},{name:"Nanny",id:""},{name:"Waiter",id:""},{name:"Government Jobs",id:""},{name:"Retail",id:""},{name:"Others",id:""}]
     })
 
     const table4Data =() =>({
 
         name: "Housing",
-        subitems: ["Rent","Single Room","Double Room","Apt","Basement"]
+        subitems: [{name:"Rent",id:""},{name:"Single Room",id:""},{name:"Double Room",id:""},{name:"Apt",id:""},{name:"Basement",id:""}]
     })
 
     const table5Data =() =>({
 
         name: "For sale",
-        subitems: ["Electronics","Clothing","Books","Barter","Others"]
+        subitems: [{name:"Electronics",id:""},{name:"Clothing",id:""},{name:"Books",id:""},{name:"Barter",id:""},{name:"Others",id:""}]
     })
 
 

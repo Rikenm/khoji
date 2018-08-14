@@ -10,6 +10,8 @@ import "../style/listitemstyle.css"
 
 const ListingItem = (date,id,username,title,location) => {
 
+    //fetch
+
     id =1112
 
     return(

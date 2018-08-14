@@ -2,17 +2,23 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {fetchPost} from "../store/actions/post";
 
-import "../style/listitemstyle.css"
+import "../style/post.css"
+
+
 
 class Post extends Component{
 
     componentDidMount(){
-        // this.props.fetchfetchPost();  //uncomment later
+        // this.props.fetchfetchPost(this.props.id);  //uncomment later
     }
 
     render(){
 
         // const {post} = this.props //uncomment later
+        
+        const {post} = this.props
+
+        console.log("hello",post)
         return(
             <div>
             
@@ -44,15 +50,22 @@ class Post extends Component{
 
                     </div>
 
-                    <p className="body">
-                    Bacon corned beef porchetta swine meatloaf.  Pastrami pork belly jerky cow drumstick shankle boudin.  Chuck swine jowl, boudin beef ribs brisket kevin jerky ham hock.  Hamburger sirloin ham hock, flank alcatra biltong drumstick corned beef short ribs swine buffalo pig shoulder.  Pork chop biltong shankle bresaola fatback.  Porchetta boudin chicken andouille pork, pancetta pork loin kielbasa turducken.  Frankfurter pork shoulder, tail fatback filet mignon venison ground round corned beef hamburger tongue.
+                    <div className="body">
+                    {/* {post.split('\n').map(function(item, key) {
+                        return (
+                            <span key={key}>
+                            {item}
+                            <br/>
+                            </span>
+                        )
+                        })} */}
 
-                    Bacon corned beef porchetta swine meatloaf.  Pastrami pork belly jerky cow drumstick shankle boudin.  Chuck swine jowl, boudin beef ribs brisket kevin jerky ham hock.  Hamburger sirloin ham hock, flank alcatra biltong drumstick corned beef short ribs swine buffalo pig shoulder.  Pork chop biltong shankle bresaola fatback.  Porchetta boudin chicken andouille pork, pancetta pork loin kielbasa turducken.  Frankfurter pork shoulder, tail fatback filet mignon venison ground round corned beef hamburger tongue
-                    Bacon corned beef porchetta swine meatloaf.  Pastrami pork belly jerky cow drumstick shankle boudin.  Chuck swine jowl, boudin beef ribs brisket kevin jerky ham hock.  Hamburger sirloin ham hock, flank alcatra biltong drumstick corned beef short ribs swine buffalo pig shoulder.  Pork chop biltong shankle bresaola fatback.  Porchetta boudin chicken andouille pork, pancetta pork loin kielbasa turducken.  Frankfurter pork shoulder, tail fatback filet mignon venison ground round corned beef hamburger tongue.   
-                     </p>
+                        {post}
+
+                     </div>
 
             </div>
-            </div>
+        </div>
         )
         
     }
@@ -63,7 +76,7 @@ class Post extends Component{
 
 function mapStateToProps(state){
     return{
-        post: state.payload
+        posttrial: state.payload
     }
 }
 

@@ -55,11 +55,11 @@ class ListingList extends Component{
         return (
         <List dense={false} className="List">
           
-          <ListingItem key={0} date={"1 day"} text={""} username={"Rikenm"}  title={"IT Job"} location={"Revere, MA"} className="List"/>
-          <ListingItem key={1} date={"1 day"} text={""} username={"Rikenm"}  title={"IT Job"} location={"Revere, MA"}/>
-          <ListingItem key={2} date={"1 day"} text={""} username={"Rikenm"}  title={"IT Job"} location={"Revere, MA"}/>
-          <ListingItem key={3} date={"1 day"} text={""} username={"Rikenm"}  title={"IT Job"} location={"Revere, MA"}/>
-          <ListingItem key={4} date={"1 day"} text={""} username={"Rikenm"}  title={"IT Job"} location={"Revere, MA"}/>
+          <ListingItem key={0} date={"1 day"}  username={"Rikenm"}  title={"IT Job"} location={"Revere, MA"} className="List"/>
+          <ListingItem key={1} date={"1 day"}  username={"Rikenm"}  title={"IT Job"} location={"Revere, MA"}/>
+          <ListingItem key={2} date={"1 day"}  username={"Rikenm"}  title={"IT Job"} location={"Revere, MA"}/>
+          <ListingItem key={3} date={"1 day"}  username={"Rikenm"}  title={"IT Job"} location={"Revere, MA"}/>
+          <ListingItem key={4} date={"1 day"}  username={"Rikenm"}  title={"IT Job"} location={"Revere, MA"}/>
             
          </List>
         )
