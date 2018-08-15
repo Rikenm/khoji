@@ -51,52 +51,7 @@ class AuthForm extends Component{
         
     }
 
-   facebookClick = (facebookdata) =>{
-       
-
-      
-        
-
-        if (!facebookdata.error){
-
-           const {name,accessToken,email,id}=facebookdata
-
-           console.log("yo",name,accessToken,email,id)
-
-        const newObject ={name: name,
-                    accessToken: accessToken,
-                    email: email,
-                    userType: "facebook",
-                    username: name.split(" ")[0]+id
-
-        
-                    }
-
-
-
-
-        this.props.onAuth("user", newObject)
-        .then(()=>{
-            // take to the homepage
-
-            this.props.history.push("/")
-            //redirect
-        }).catch(()=>{
-            return
-        })
-
-        }else{
-                this.props.addError("Facebook Error")
-               
-                return
-                
-
-        }
-
-
-
-    }
-
+   
 
     
 
@@ -204,7 +159,8 @@ class AuthForm extends Component{
 
                             <div className="facebookButton">
                             
-                                <Facebook  addError={addError} facebookClick = {this.facebookClick}/>
+                                <Facebook  addError={addError} {...this.props}/> {//facebookClick = {this.facebookClick}/>
+                                }
                             </div>
 
                                
@@ -219,7 +175,7 @@ class AuthForm extends Component{
                                         <div className="thirdTextFieldAuthForm">          
                                             <TextField className="textField"
                                                                                     
-                                            id="password-input"
+                                            id="repeatpassword-input"
                                             label="Repeat Password"
                                             onChange={this.handleChange} 
                                             

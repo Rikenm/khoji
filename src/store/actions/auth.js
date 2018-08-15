@@ -23,7 +23,12 @@ export function logout(){
     return dispatch => {
 
         console.log("dispatching log off")
-        localStorage.clear();
+        // localStorage.clear();
+        localStorage.removeItem("refreshToken")
+        localStorage.removeItem("accessToken")
+        localStorage.removeItem("userInfo")
+
+
         setAuthorizationToken(false)
         dispatch(setCurrentUser({}))
        

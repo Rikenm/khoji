@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import Input from "@material-ui/core/Input";
+
 import { withStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
+import {USA_STATE_LIST} from "../constant/statecity"
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import "../../style/popupstyling.css"
+
 
 /** The prompt content component */
 const styles = theme => ({
@@ -29,15 +29,29 @@ class Prompt extends React.Component {
     super(props);
 
     this.state = {
-      value: this.props.defaultValue
+      value: this.props.defaultValue,
+      country:'USA',
+      state: 'All',
+      city:'All'
     };
 
     this.onChange = e => this._onChange(e);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.value !== this.state.value) {
-      this.props.onChange(this.state.value);
+    if (prevState !== this.state) {
+      
+     if (this.state.country == "USA") {
+    
+      this.props.onChange(this.state.country?this.state.country:"USA",this.state.state?this.state.state:"All");
+
+      } else {
+          
+        this.props.onChange(this.state.country,this.state.city?this.state.city:"All");
+
+      } 
+
+
     }
   }
 
@@ -46,6 +60,11 @@ class Prompt extends React.Component {
 
     this.setState({ value: value });
   }
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
 
   render() {
     const { classes } = this.props;
@@ -62,42 +81,51 @@ class Prompt extends React.Component {
         }
 
         <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="age-simple">Country</InputLabel>
+          <InputLabel htmlFor="age-required">Country</InputLabel>
           <Select
-            value={19}
+            value={this.state.country}
+            onChange={this.handleChange}
             inputProps={{
-              name: "age",
-              id: "age-simple"
+              name: "country",
+              id: "country-simple"
             }}
           >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+
+         
+
+            <MenuItem value="USA">USA</MenuItem>
+
+          
+             
+             <MenuItem value="Australia">Australia</MenuItem>
+            <MenuItem value="Nepal">Nepal</MenuItem>
+           
+            
           </Select>
         </FormControl>
 
-        <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="age-simple">State</InputLabel>
+       { (this.state.country === "USA")?<FormControl className={classes.formControl}>
+          <InputLabel htmlFor="age-required">State</InputLabel>
           <Select
-            value={19}
+            value={this.state.state}
+            onChange={this.handleChange}
             inputProps={{
-              name: "age",
-              id: "age-simple"
+              name: "state",
+              id: "state-required"
             }}
           >
-            <MenuItem value="">
-              <em>None</em>
+            <MenuItem value="All">
+              <em>All</em>
             </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </FormControl>
 
-        <FormControl className={classes.formControl}>
+             {USA_STATE_LIST.map((state)=>(
+               <MenuItem key={state} value={state}>{state}</MenuItem>
+
+             ))}
+            
+            
+          </Select>
+        </FormControl>: <FormControl className={classes.formControl}>
           <InputLabel htmlFor="age-simple">City</InputLabel>
           <Select
             value={19}
@@ -114,6 +142,9 @@ class Prompt extends React.Component {
             <MenuItem value={30}>Thirty</MenuItem>
           </Select>
         </FormControl>
+        }
+
+       
       </div>
     );
   }

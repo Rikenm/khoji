@@ -7,8 +7,10 @@ const register = () =>{
 
     Popup.registerPlugin("prompt", function(defaultValue, placeholder, callback) {
         let promptValue = null;
-        let promptChange = function(value) {
-          promptValue = value;
+        let promptValue2 = null;
+        let promptChange = function(value1,value2) {
+          promptValue = value1;
+          promptValue2 = value2;
         };
     
         this.create({
@@ -28,7 +30,7 @@ const register = () =>{
                 key: "⌘+s",
                 className: "success",
                 action: function() {
-                  callback(promptValue);
+                  callback(promptValue,promptValue2);
                   Popup.close();
                 }
               }

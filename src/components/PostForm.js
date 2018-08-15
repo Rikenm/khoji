@@ -34,21 +34,21 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: 200,
-    backgroundColor: purple[300]
+   
   },
 
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 200,
-    color: purple[300]
+   
   },
   actionsContainer: {
     marginBottom: theme.spacing.unit * 2,
-    color: purple[300]
+    
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2,
-    color: purple[300]
+    
   }
 });
 
@@ -66,12 +66,18 @@ const NUMBER_ITEMS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 class VerticalLinearStepper extends React.Component {
   state = {
     activeStep: 0,
-    value: ""
+    category: "",
+    subCategory: "",
   };
 
   handletextchange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
 
   getStepContent = (step, classes) => {
     switch (step) {
@@ -82,12 +88,12 @@ class VerticalLinearStepper extends React.Component {
             <FormControl className={classes.formControl} color="secondary">
               <InputLabel htmlFor="age-simple">Category</InputLabel>
               <Select color="secondary"
-                value={this.state.age}
+                value={this.state.category}
                 onChange={this.handleChange}
                 name="age"
                 inputProps={{
-                  name: "age",
-                  id: "age-simple"
+                  name: "category",
+                  id: "category-simple"
                 }}
                 className={classes.selectEmpty}
               >
@@ -102,12 +108,12 @@ class VerticalLinearStepper extends React.Component {
             <FormControl className={classes.formControl}>
               <InputLabel htmlFor="age-simple">Sub-Category</InputLabel>
               <Select
-                value={this.state.age}
+                value={this.state.subCategory}
                 onChange={this.handleChange}
                 name="age"
                 inputProps={{
-                  name: "age",
-                  id: "age-simple"
+                  name: "subCategory",
+                  id: "subCategory-simple"
                 }}
                 className={classes.selectEmpty}
               >
@@ -207,10 +213,6 @@ class VerticalLinearStepper extends React.Component {
     const steps = getSteps();
     const { activeStep } = this.state;
 
-    // textarea.addEventListener('keypress', function(e) {
-     
-    //   p_wrap.textContent = e.target.value
-    // })
 
     return (
       <div className={classes.root}>

@@ -6,53 +6,78 @@ import "../style/popupstyling.css"
 import {CategoryList} from "../containers/category"
 import Alertregister from "../util/Alert/popuregister"
 
-
-const clicked2 = () => {
-
-  
-  Popup.plugins().prompt("", "Type your name", function(value) {
-    Popup.alert("You typed: " + value);
-  });
-
-};
-
-
 const Homepage = (props) => {
 
   Alertregister()
+  console.log("Alert regiestered")
 
   const {currentUser,whichState} = props
   const stateButtonClicked = () => {
-    // if state is clicked
+      // if state is clicked
 
-       
-       props.firstState("MA")// need to insert the data
-       props.history.push("/")
-      
+        
+        props.firstState("MA")// need to insert the data
+        props.history.push("/")
+        
 
 
-  }  
+    }  
 
-const clicked = () =>{
 
-  props.history.push("/login")
-}        
+  // const clicked = () =>{
+  //   // console.log("hi")
+  //   // props.history.push("/login")
+  // }  
+
+
+  //pop up
+  const clicked2 = () => {
+
+  
+      Popup.plugins().prompt("", "Type your name", function(country,state) {
+
+      //all right except when no update 
+      if (country == null){
+        country = "USA"
+        state = "All"
+      }
+        
+      props.firstState(state+", "+country)
+        
+        // dispatch location from here
+        
+      });
+
+};
+
+//end popup
 
 if (currentUser.isAuthenticated){
      // authtenticated
+    
 
+     if (localStorage.getItem("first_visit") === null) {
+
+            // clicked()
+          //...
+
+      }
+
+      const first_visit = localStorage.getItem("first_visit")
     
 return(    
   
   
                 <div >
                  
-                       <Navbar /> 
+
                        <Popup />
+                       <Navbar /> 
+                       
                        <div className="stateandtable">
                         <div className="stateSelected">
                         <div className="block1">You are currently checking listings at: </div> 
-                        <div className="block2" onClick={clicked2}>{localStorage.getItem("first_visit")?localStorage.getItem("first_visit"):"N/A"}</div>
+                        <div className="block2" onClick={clicked2}> {first_visit?first_visit:"World"}</div>
                         </div>
                         <CategoryList {...props}/>
                       </div>
@@ -61,58 +86,69 @@ return(
 
 
 
-}else if (localStorage.getItem("first_visit") !== null) {
+}else{ 
+  
+  if (localStorage.getItem("first_visit") === null) {
+
+    //  clicked()
   //...
-  return(
-    <div>
-       
-     <Navbar  /> 
-     <Popup />
- 
+    
+  
+}
+
+const first_visit = localStorage.getItem("first_visit")
+
+return(
+  <div>
+    <Popup /> 
+   <Navbar  /> 
 
 
-       <div className="stateandtable">
-       <h5 className="stateSelected">You are currently checking listings at:</h5> <div className="state-selected"onClick={clicked2}>{localStorage.getItem("first_visit")?localStorage.getItem("first_visit"):"N/A"}</div>
-     <CategoryList {...props}/>
-     </div>
-     
-    </div>
-  )
+     <div className="stateandtable">
+                        <div className="stateSelected">
+                        <div className="block1">You are currently checking listings at: </div> 
+                        <div className="block2" onClick={clicked2}>{first_visit?first_visit:"World"}</div>
+                        </div>
+   <CategoryList {...props}/>
+   </div>
+   
+  </div>
+)
 
 }
-else{
-return(
-        <div className="formbackground">
-       <div className="firstCard">
+// else{
+// return(
+//         <div className="formbackground">
+//        <div className="firstCard">
 
         
        
-           <h1 className="stateheading"> State </h1>
+//            <h1 className="stateheading"> State </h1>
           
-           <input className="stateinput" type="text"/> <br/>
+//            <input className="stateinput" type="text"/> <br/>
            
-            <button onClick={stateButtonClicked}  className="stateButton">Go</button>
+//             <button onClick={stateButtonClicked}  className="stateButton">Go</button>
           
-            <br />
-          <div className="footnotes">      
-            Free listing <br/>
-           <div className="clickableDiv"onClick={clicked}> Login Required</div><br/>
-           </div>
+//             <br />
+//           <div className="footnotes">      
+//             Free listing <br/>
+//            <div className="clickableDiv"onClick={clicked}> Login Required</div><br/>
+//            </div>
             
         
           
        
        
-      </div>
-</div>  )
+//       </div>
+// </div>  )
 
-        // return(
-        //         <div>
-        //                 <Navbar/>
-        //                 Already Logged in</div>
-        // )
+//         // return(
+//         //         <div>
+//         //                 <Navbar/>
+//         //                 Already Logged in</div>
+//         // )
 
-}
+// }
 
 
 

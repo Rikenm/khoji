@@ -53,7 +53,7 @@ return(
 
                  
                     
-                    /> : props.history.push("/")
+                    /> : <Redirect to='/' />
                    }
                      <div> { 
                        
@@ -77,7 +77,7 @@ return(
                        addError = {facebookError}
                        facebookremoveError = {facebookremoveError}
                        onAuth = {authUser} buttonText="Log in" heading="Welcome Back"{...props}/>
-                       : props.history.push("/")
+                       : <Redirect to='/' />
                    }     
 
                        <div> 

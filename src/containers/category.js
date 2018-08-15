@@ -1,8 +1,14 @@
 import Table from "../util/table/table"
 import React from "react";
 import '../style/categoryStyling.css';
+import {connect} from "react-redux";
 
 export const CategoryList = (props)=>{
+
+
+    const {whichState} = props
+
+    console.log("whichstat",whichState)
 
     const clicked = () =>{
        props.history.push("/newpost")
@@ -54,23 +60,23 @@ export const CategoryList = (props)=>{
 
       
     <div className="table1">   
-    <Table data={table1Data()}/>
+    <Table whichState={whichState} data={table1Data()}/>
     </div>
 
     <div className="table2">
-    <Table data={table2Data()}/>
+    <Table whichState={whichState} data={table2Data()}/>
     </div>
 
     <div className="table3">
-    <Table data={table3Data()}/>
+    <Table whichState={whichState} data={table3Data()}/>
     </div>
 
     <div className="table4">
-    <Table data={table4Data()}/>
+    <Table whichState={whichState} data={table4Data()}/>
     </div>
 
     <div className="table5">
-    <Table data={table2Data()}/>
+    <Table whichState={whichState} data={table2Data()}/>
     </div>
 
     <button type = "button"
@@ -89,3 +95,11 @@ export const CategoryList = (props)=>{
 
 
 }
+
+function mapStateToProps(state){
+    return{
+        whichState: state.whichState
+    }
+}
+
+export default connect(mapStateToProps,)(CategoryList)
