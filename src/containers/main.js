@@ -16,11 +16,15 @@ import  PostPage from "../components/postPage"
 import {NotFound} from "../components/NotFound"
 
 
+
 // routing logic
 const Main = props => {
-    const {authUser,errors, removeError, currentUser,whichState,firstState,facebookError} = props
+
+    
+    const {authUser,errors, removeError, currentUser,whichState,firstState,facebookError,post} = props
 
     console.log("main's error",errors)
+    console.log("main's props",props)
 
     
 return(
@@ -44,7 +48,7 @@ return(
             <Route exact path="/signup" 
                 render= { props => 
                     <div>
-                   {currentUser.isAuthenticated === false ? <AuthForm 
+                   {currentUser.isAuthenticated == false ? <AuthForm 
                     errors ={errors}
                     removeError = {removeError}
                     addError = {facebookError}
@@ -70,7 +74,7 @@ return(
             <Route exact path="/login" 
                 render= { props => 
                       <div>
-                          {currentUser.isAuthenticated === false ? 
+                          {currentUser.isAuthenticated == false ? 
                        <AuthForm 
                        errors ={errors}
                        removeError = {removeError}
@@ -97,15 +101,50 @@ return(
             />
           
             <Route exact path="/newPost"
+               
             // need Auth HOC
-            component={withAuth(PostForm)
+
+        //     component = { withAuth(PostForm) }
+        //    ---------
+            // render = { props => {
+            //     const MyComponent = withAuth(PostForm)
+            //     return (<MyComponent {...props}></MyComponent>)
+            //      }
+
+
+            // }
+            //--------
+
+            // render = { props => {
+                
+            //     return (<PostForm {...props}></PostForm>)
+            //      }
+
+
+            // }
+
+           
+            render = { props => 
+
+                <div>
+                {currentUser.isAuthenticated == true ? 
+
+                    <PostForm {...props}/>  :  <Redirect to='/login' />
+
+                }
+                </div>
+
             }
+
+            
+
+           
              />
 
 
              <Route exact path ="/listing/:category?/:subcategory?"  {...props}  component={ListingListTimeLine}/>
 
-             <Route exact path = "/post/:postid" component={PostPage}/>
+             <Route exact path = "/post/:postid" {...post} component={PostPage}/>
 
 
 
@@ -131,11 +170,13 @@ function mapStateToProps(state){
    
    
 
-    console.log(state)
+    
     return{
         currentUser: state.currentUser,
         errors: state.errors,
-        whichState: state.firstStateReducer.whichState
+        whichState: state.firstStateReducer.whichState,
+      
+       
     }
 }
 

@@ -1,9 +1,9 @@
 import {LOAD_POST} from "../actionTypes"
 
-const postReducer = (state =[], action) => {
+const postReducer = (state ={}, action) => {
     switch (action.type){
             case LOAD_POST:
-                return [...action.payload]
+                return {...state,post: action.payload}
 
 
             default:

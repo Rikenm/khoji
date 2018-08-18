@@ -23,21 +23,3 @@ export const fetchListings = (whichstate,category,page) =>{
     }
 
 }
-
-export const newPost = (text) =>{
- 
-    return (dispatch) =>{
-         //new post posting   
-        return apiCall("post","/api/post",{})
-        .then(res => {
-
-        })
-        .catch(err => {
-            dispatch(addError(err.message))  
-        })
-
-    }
-
-
-
-}

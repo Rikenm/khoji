@@ -14,14 +14,54 @@ export const loadPost = (post) => {
 
 export const fetchPost = (postid) =>{
     return dispatch =>{
-            return apiCall("GET",`/api/posts/${postid}`)
+            return apiCall("GET",`http://localhost:5012/api/v1/post/${postid}`)
             .then((res)=>{
-                    dispatch(loadPost(res))
+                   
+                   dispatch(loadPost(res))
                     
 
             }).catch(err=>{
-                dispatch(addError(err.message))
+                // dispatch(addError(err.message))
+                dispatch(addError("Error occured"))
             })
     }
+
+}
+
+
+export const newPost = (data) =>{
+ 
+    return (dispatch) =>{
+         //new post posting  
+     return new Promise((resolve,reject)=>{  
+        return apiCall("post","http://localhost:5012/api/v1/createpost",data)
+        .then(res => {
+             console.log(res)
+            try {
+                resolve(res.data[0].insertId) 
+                
+            }catch(err){
+                dispatch(addError("Error occured")) 
+                console.log(err)
+                reject(err) 
+            }
+
+
+            // dispatch(removeError())
+            
+
+            
+
+        })
+        .catch(err => {
+            dispatch(addError("Error occured")) 
+            reject(err) 
+        })
+
+      })
+
+    }
+
+
 
 }

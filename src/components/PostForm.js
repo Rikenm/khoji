@@ -6,7 +6,7 @@ import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import StepContent from "@material-ui/core/StepContent";
 import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
+import  Snackbar from "../util/snackbar/snackbar";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
@@ -15,13 +15,10 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Navbar from "../containers/Navbar"
 import "../style/postform.css"
 import Preview from "../containers/preview";
-
+import {connect} from "react-redux";
 import {Category_LIST,Sub_Category_LIST} from "../util/constant/categorylist";
 import {STATE_CITY_DICT} from "../util/constant/statecity"
-
-
-
-
+import {newPost} from "../store/actions/post"
 import TextField from "@material-ui/core/TextField";
 
 const styles = theme => ({
@@ -63,27 +60,47 @@ function getSteps() {
 const NUMBER_ITEMS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 class VerticalLinearStepper extends React.Component {
-  state = {
+ 
+ 
+  constructor(props){
+    super(props)
+
+  this.state = {
     activeStep: 0,
     category: "",
-    subCategory: "",
+    subcategory: "",
     country: "",
-    secondary: "",
+    state: "",
     city: "",
-    body: "",
+    description: "",
     title: "",
     contact: "",
     name: ""
   };
 
+}
+
+
+
 
   componentDidMount(){
  
 
-  
-   this.setState({ name: JSON.parse(localStorage.getItem("userInfo")).name
-     })
-  }
+  if (typeof localStorage.getItem("userInfo") != undefined && localStorage.getItem("userInfo")){
+    this.setState({ name: JSON.parse(localStorage.getItem("userInfo")).name
+      })
+    }
+}
+
+
+
+componentWillUnmount(){
+  console.log("about to unmount")
+}
+
+// shouldComponentUpdate(nextProps){
+//    return false
+// }
 
  
 
@@ -92,13 +109,20 @@ class VerticalLinearStepper extends React.Component {
   };
 
   handleLocationChange = event => {
+    
+    if (event.target.value == "Nepal" ){
+      this.setState({
+        state:"NEP"
+      })
+    }
+
     if (event.target.name == "country") {
       this.setState({ [event.target.name]: event.target.value,
-                             secondary: "",
+                             state: "",
                              city:""
       
       });
-    }else if (event.target.name == "secondary"){
+    }else if (event.target.name == "state"){
 
       this.setState({ [event.target.name]: event.target.value,
         city:"" 
@@ -147,11 +171,11 @@ class VerticalLinearStepper extends React.Component {
             <FormControl required className={classes.formControl}>
               <InputLabel htmlFor="age-simple">Sub-Category</InputLabel>
               <Select
-                value={this.state.subCategory}
+                value={this.state.subcategory}
                 onChange={this.handleChange}
-                name="subCategory"
+                name="subcategory"
                 inputProps={{
-                  name: "subCategory",
+                  name: "subcategory",
                   id: "subCategory-simple"
                 }}
                 className={classes.selectEmpty}
@@ -200,11 +224,11 @@ class VerticalLinearStepper extends React.Component {
             <FormControl className={classes.formControl}>
               <InputLabel htmlFor="age-simple">{this.state.country=="Nepal"?"City":"State"}</InputLabel>
               <Select
-                value={this.state.secondary}
+                value={(this.state.country=="USA" || this.state.country=="Australia") ? this.state.state: this.state.city}
                 onChange={this.handleLocationChange}
                 name="age"
                 inputProps={{
-                  name: "secondary",
+                  name: (this.state.country=="USA" || this.state.country=="Australia") ? "state": "city" ,
                   id: "age-simple"
                 }}
                 className={classes.selectEmpty}
@@ -259,8 +283,8 @@ class VerticalLinearStepper extends React.Component {
             <br/>
             <textarea
               placeholder="Please type here..."
-              name="body"
-              value={this.state.body}
+              name="description"
+              value={this.state.description}
               rows="12"
               cols="50"
               onChange={this.handleChange}
@@ -280,26 +304,60 @@ class VerticalLinearStepper extends React.Component {
     }
   };
 
-  handleNext = () => {
+  handleNext = (event) => {
+    event.preventDefault()
     this.setState(state => ({
       activeStep: state.activeStep + 1
     }));
   };
 
-  handleBack = () => {
+  handleBack = (event) => {
+    event.preventDefault()
     this.setState(state => ({
       activeStep: state.activeStep - 1
     }));
   };
 
-  handleReset = () => {
-    this.setState({
-      activeStep: 0
-    });
-  };
+  
+
+  handleSubmit = (event) => {
+
+    event.preventDefault()
+
+    console.log(this.state)
+    this.props.newPost(this.state).then((id) =>{
+      
+       
+
+       this.setState({
+        activeStep: 0,
+        category: "",
+        subCategory: "",
+        country: "",
+        state: "",
+        city: "",
+        description: "",
+        title: "",
+        contact: "",
+        name: ""
+      })
+      
+      
+
+      this.props.history.push(`/post/${id}`)
+
+
+    })
+    .catch((err)=>{
+       return 
+    })
+
+
+
+  }
 
   render() {
-    const { classes } = this.props;
+    const { classes,errors } = this.props;
     const steps = getSteps();
     const { activeStep } = this.state;
 
@@ -311,8 +369,8 @@ class VerticalLinearStepper extends React.Component {
         {/* <p id="p_wrap">{this.state.value}</p> */}
 
         <Preview post={this.state} />
-
-        <Stepper activeStep={activeStep} orientation="vertical" color="secondary">
+      <form onSubmit = {this.handleSubmit}>
+        <Stepper activeStep={activeStep} orientation="vertical" color="secondary" className="stepper">
           {steps.map((label, index) => {
             return (
 
@@ -330,14 +388,24 @@ class VerticalLinearStepper extends React.Component {
                       >
                         Back
                       </Button>
-                      <Button
+                      {activeStep === steps.length - 1 ? <Button
+                       type="submit"
+                        variant="contained"
+                        color="primary"
+                        
+                        className={classes.button}
+                      > Submit
+                        {/* {activeStep === steps.length - 1 ? "Submit" : "Next"} */}
+                      </Button> : 
+                      
+                     <Button
                         variant="contained"
                         color="primary"
                         onClick={this.handleNext}
                         className={classes.button}
-                      >
-                        {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                      </Button>
+                      > Next
+                      
+                      </Button> }
                     </div>
                   </div>
                 </StepContent>
@@ -345,18 +413,43 @@ class VerticalLinearStepper extends React.Component {
             );
           })}
         </Stepper>
+        </form>
         </div>
-        {activeStep === steps.length && (
-          <Paper square elevation={0} className={classes.resetContainer}>
-            <div>All steps completed - you&quot;re finished</div>
-            <Button onClick={this.handleReset} className={classes.button}>
-              Reset
-            </Button>
-          </Paper>
-        )}
+        
+        <div> {  //error
+                       
+                       errors.message !== null? <Snackbar message= {errors.message}  />:<div/>
 
+                       
+                
+                    }</div>
 
       </div>
+// ------
+  // <div>
+  //   <TextField 
+  //         label="City"
+  //         name = "city"
+  //         value = {this.state.city} 
+  //         onChange={this.handleLocationChange}
+  //         style={{width:220,  marginLeft: '+10px'}}
+       
+          
+  //         />
+  //         <button onClick={this.handleSubmit}> 
+
+  //           Submit
+  //         </button>
+
+  //         <div> {  //error
+                       
+  //                                       errors.message !== null? <Snackbar message= {errors.message}  />:<div/>
+                 
+                                        
+                                 
+  //                                    }</div>
+  //    </div>     
+      
     );
   }
 }
@@ -365,4 +458,11 @@ VerticalLinearStepper.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(styles)(VerticalLinearStepper);
+function mapStateToProps(state){
+
+  return {
+    errors: state.errors
+  }
+}
+
+export default connect(mapStateToProps,{newPost})(withStyles(styles)(VerticalLinearStepper));

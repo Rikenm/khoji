@@ -81,7 +81,7 @@ return(
                             <div className="body">
                             
 
-                                {post.body}
+                                {post.description}
 
                             </div>
 

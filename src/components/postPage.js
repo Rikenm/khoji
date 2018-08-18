@@ -12,16 +12,18 @@ const PostPage = props => {
     // <Redirect to="/404" />
 
     //get the id from the param
-    
 
+    const {match} = props
+    
+    console.log("match",props)
     return(
         <div className ="row">
 
-       
+        
           
             <Navbar/>
 
-            <Post /> { // pass id here
+            <Post id={ match.params.postid} /> { // pass id here
                  
             }
             

@@ -3,11 +3,13 @@ import {connect} from "react-redux";
 
 export default function withAuth(ComponentToBeRendered){
 
+   
+
     class Authenticate extends Component{
 
 
         componentDidMount(){
-
+            console.log("withauth mounted with this prop",this.props)
             if(this.props.isAuthenticated === false){
                 this.props.history.push("/login")
             }
@@ -24,7 +26,7 @@ export default function withAuth(ComponentToBeRendered){
 
         render(){
 
-            return <ComponentToBeRendered {...this.props}/>
+            return <ComponentToBeRendered {...this.props}  />
 
 
 

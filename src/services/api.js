@@ -23,7 +23,7 @@ export function apiCall(method, path, data){
 
         return axios[method.toLowerCase()](path,data).then(res=>{
 
-            console.log("resolved",res.data)
+            console.log("resolved in apicall",res.data)
 
             return resolve(res.data)
         }).catch(err => {
@@ -34,3 +34,21 @@ export function apiCall(method, path, data){
     })
 
 }
+
+// export function apiCallForGet(method, path, data){
+
+//     return new Promise((resolve,reject)=>{
+//         delete axios.defaults.headers.common["Authorization"];
+//         return axios[method.toLowerCase()](path,data).then(res=>{
+
+//             console.log("resolved in apicall",res.data)
+
+//             return resolve(res.data)
+//         }).catch(err => {
+//              // fix this later
+//             //  console.log("err",typeof err.response !== 'undefined',err.response)
+//             return reject(typeof err.response !== 'undefined' ? err.response.data.error: "Error")
+//         })
+//     })
+
+// }
