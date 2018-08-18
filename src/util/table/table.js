@@ -7,6 +7,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import {Link} from "react-router-dom";
 
 const CustomTableCell = withStyles(theme => ({
   head: {
@@ -49,7 +50,7 @@ const data = [
 ];
 
 function CustomizedTable(props) {
-  const { classes, data } = props;
+  const { classes, data, whichState } = props;
   
   console.log(props,"aflsdlkj=====")
 
@@ -65,7 +66,11 @@ function CustomizedTable(props) {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <CustomTableCell>{data.name}</CustomTableCell>
+            <CustomTableCell>
+            <span >
+              <Link style={{color:"white"}} to= {`/listing/${data.name}?location=${whichState}`} > {data.name} </Link>
+                  </span>
+            </CustomTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -73,7 +78,10 @@ function CustomizedTable(props) {
             return (
               <TableRow className={classes.row} key={i}>
                 <CustomTableCell onClick={clicked} component="th" scope="row" key={i}>
-                  {item.name}
+                  
+                  <span >
+              <Link to= {`/listing/${data.name}/${item.name}?location=${whichState}`} > {item.name} </Link>
+                  </span>
                 </CustomTableCell>
                 
               </TableRow>

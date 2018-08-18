@@ -323,6 +323,20 @@ height: 50px;
   
 }
 
+.block2{
+   color:#ED396A;
+   font-weight: 700;
+
+}
+
+.block2:hover{
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 700;
+
+}
+
+
 
 
 

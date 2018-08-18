@@ -45,7 +45,7 @@ export function authUser(type,userData){
         console.log("datatoserver",userData)
         return new Promise((resolve,reject)=>{  // returning promise
 
-            return apiCall("post",`http://localhost:6011/api/v1/${type}`,userData).then(
+            return apiCall("post",`http://localhost:5012/api/v1/${type}`,userData).then(
                 res=>{
 
                 
@@ -63,7 +63,7 @@ export function authUser(type,userData){
                 resolve();
             }).catch(err =>{
                     
-                    
+                    console.log("here",err)
                     dispatch(addError(err.msg?err.msg:err)) //error // make biken change thid to message
                     reject()
 

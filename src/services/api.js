@@ -13,9 +13,12 @@ export function setTokenHeader(token){
 
 }
 
+//add network manager to get new access token from the refresh token
+
 
 
 export function apiCall(method, path, data){
+
     return new Promise((resolve,reject)=>{
 
         return axios[method.toLowerCase()](path,data).then(res=>{
@@ -25,7 +28,7 @@ export function apiCall(method, path, data){
             return resolve(res.data)
         }).catch(err => {
              // fix this later
-             console.log("err",typeof err.response !== 'undefined',err.response)
+            //  console.log("err",typeof err.response !== 'undefined',err.response)
             return reject(typeof err.response !== 'undefined' ? err.response.data.error: "Error")
         })
     })

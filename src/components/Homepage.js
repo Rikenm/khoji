@@ -56,12 +56,7 @@ if (currentUser.isAuthenticated){
      // authtenticated
     
 
-     if (localStorage.getItem("first_visit") === null) {
-
-            // clicked()
-          //...
-
-      }
+     
 
       const first_visit = localStorage.getItem("first_visit")
     
@@ -87,14 +82,6 @@ return(
 
 
 }else{ 
-  
-  if (localStorage.getItem("first_visit") === null) {
-
-    //  clicked()
-  //...
-    
-  
-}
 
 const first_visit = localStorage.getItem("first_visit")
 

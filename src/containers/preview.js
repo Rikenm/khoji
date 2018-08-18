@@ -26,25 +26,43 @@ return(
                 <div className="post"> 
                         <div className="title"> 
                         
-                        Fridays for Friends - Bilingual Cantonese-English - Each Friday 6-9 (Longwood Medical Area, Boston (02115)) 
-                            
+                        {
+                          post.title == ""? "Fridays for Friends - Bilingual Cantonese-English - Each Friday 6-9 (Longwood Medical Area, Boston (02115))" : post.title
+                        }  
                         </div>
                         <div className = "sidebar">
                                     <div className= "name">
                                         Name<br/>
-                                       <div className= "name-value"> Riken Maharjan </div>
+                                       <div className= "name-value"> {post.name} </div>
 
                                     </div>    
 
                                     <div className= "address">
                                         Address<br/>
-                                        <div className= "address-value">  Long Beach, MA, USA</div>
+                                        { post.country != "Nepal"?
+                                         <div className= "address-value"> 
+                                            {post.city?post.city+", ":"CITYHERE, "}
+                                            {post.secondary?post.secondary+", ":"MA, "}  
+                                            {post.country?post.country:"USA"}
+                                        
+                                        </div> :<div className= "address-value"> 
+                                           
+                                        {post.secondary?post.secondary+", ":"MA, "}  
+                                            {post.country?post.country:"USA"}
+                                        
+                                        </div>
+                                        }
+                                      
 
                                     </div>  
 
                                     <div className= "contact">
                                         Contact<br/>
-                                        <div className= "contact-value">    857-2091580  </div>
+                                        <div className= "contact-value">  
+                                          { 
+                                             post.contact =="" ? "857-209-XXXX"  :post.contact
+                                          }
+                                          </div>
 
                                     </div>  
                                  <div className="low-sidebar">
@@ -63,7 +81,7 @@ return(
                             <div className="body">
                             
 
-                                {post}
+                                {post.body}
 
                             </div>
 

@@ -11,17 +11,14 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
 */
 
 
-.fatherTable{
 
-    overflow:hidden; 
-}
+
 
 @media (min-width: 1281px) {
 
 
     
-      
-
+    
    
     .table1{
         position: absolute;
@@ -74,7 +71,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         background-color: #627155;
         color: white;
         position: absolute;
-        top: 650px;
+        top: 90%;
         right: 43%;
 
         width: 241px;
@@ -160,8 +157,8 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         background-color: #627155;
         color: white;
         position: absolute;
-        top: 650px;
-        right: 38%;
+        top: 90%;
+        right: 40%;
 
         width: 241px;
         height: 75px;
@@ -241,7 +238,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         width: 50%;
         position: absolute;
         left: 45%;
-        top: 495px;
+        top: 700px;
 
 
     }
@@ -252,7 +249,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         background-color: #627155;
         color: white;
         position: absolute;
-        top: 950px;
+        top: 1060px;
         left: 55%;
 
         width: 25%;
@@ -312,9 +309,12 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
   */
   
   @media (min-width: 481px) and (max-width: 767px) {
+    
+    
     .table1{
         position: relative;
         left: 30px;
+        top: 147px;
         width: 80%;
         
     }
@@ -323,6 +323,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         width: 80%;
         position: relative;
         left: 30px;
+        top: 172px;
         
 
     }
@@ -332,12 +333,14 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         width: 80%;
         position: relative;
         left: 30px;
+        top: 200px;
     }
 
     .table4{
         width: 80%;
         position: relative;
         left: 30px;
+        top: 232px;
        
 
     }
@@ -347,6 +350,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         width: 80%;
         position: relative;
         left: 30px;
+        top: 262px;
 
 
     }
@@ -357,7 +361,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         color: white;
         position: absolute;
         margin-top: 10%;
-       
+        top: 2050px;
         left: 23%;
 
         width: 45%;
@@ -374,14 +378,23 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         height: 50px;
     }
 
-    .fatherTable{
-       
-        position: relative;
-        overflow:hidden; 
-        top: 5
-      
-       
+   
+
+    
+    
+
+    .stateSelected{
+        position: absolute;
+        top: 120px;
+        text-align:center; 
     }
+
+    
+
+    .block1,.block2{
+        display:inline;
+    }
+    
 
     
 
@@ -407,6 +420,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         position: relative;
         left: 30px;
         width: 80%;
+        top: 147px;
         
         
     }
@@ -415,6 +429,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         width: 80%;
         position: relative;
         left: 30px;
+        top: 172px;
         
 
     }
@@ -424,12 +439,14 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         width: 80%;
         position: relative;
         left: 30px;
+        top: 200px;
     }
 
     .table4{
         width: 80%;
         position: relative;
         left: 30px;
+        top: 232px;
        
 
     }
@@ -439,6 +456,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         width: 80%;
         position: relative;
         left: 30px;
+        top: 262px;
 
 
     }
@@ -450,11 +468,12 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         color: white;
         position: absolute;
         margin-top: 10%;
-       
+        top: 2050px;
+        
         left: 23%;
 
         width: 55%;
-        height: 3%;
+        height: 70px;
 
         
 
@@ -470,6 +489,19 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
 
         height: 40px;
     }
+
+    .stateSelected{
+        position: absolute;
+        top: 120px;
+        text-align:center; 
+    }
+
+    
+
+    .block1,.block2{
+        display:inline;
+    }
+    
 
    
     

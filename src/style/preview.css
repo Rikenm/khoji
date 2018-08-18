@@ -91,11 +91,18 @@
 
 .name-value,.address-value,.contact-value{
     font-weight: 100;
+    
 
 }
 
 .address-value{
     font-size: 80%;
+    overflow-x: hidden;
+    
+}
+
+.contact-value{
+    word-wrap: break-word
 }
 
 .low-sidebar{

@@ -14,7 +14,7 @@ export const loadPost = (post) => {
 
 export const fetchPost = (postid) =>{
     return dispatch =>{
-            return apiCall("GET",`/api/`)
+            return apiCall("GET",`/api/posts/${postid}`)
             .then((res)=>{
                     dispatch(loadPost(res))
                     

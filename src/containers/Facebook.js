@@ -94,7 +94,7 @@ export default class Facebook extends Component{
         }else{
             fbContent = (<FacebookLogin
                 appId="302220027200609"
-                autoLoad={true}
+                autoLoad={false}
                 fields="name,email"
                 callback={this.facebookClick} 
                 onFailure ={this.onerror}

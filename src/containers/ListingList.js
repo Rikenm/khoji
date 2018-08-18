@@ -14,28 +14,28 @@ class ListingList extends Component{
     render(){
 
         // const {listings} = this.props //uncomment later
-        const listings = [{timeAgo:"0 days"
+        const listings = [{timeAgo:"July 5"
                            ,
                         id: 0,
                         username: "Rikenm",
                         title: "IT Job",
-                        body:  "",
+                        
                         location: "Revere,MA",
                         },
-                        {timeAgo:"1 days"
+                        {timeAgo:"July 4"
                         ,
                      id: 1,
                      username: "Biken",
                      title: "Cashier",
-                     body:  "",
+                    
                      location: "Revere,MA"
                      },
-                       {timeAgo:"2 days"
+                       {timeAgo:"July 4"
                            ,
                         id: 2,
                         username: "Rikenm",
                         title: "Marketing",
-                        body:  "",
+                       
                         location: "Revere,MA"
                         }
                     
@@ -44,22 +44,19 @@ class ListingList extends Component{
 
                     let listingList = listings.map(m =>{
                        
-                        <ListingItem key={m.id} date={m.timeAgo} text={m.body} username={m.username}  title={m.title} location={m.location} />
+                        return <ListingItem id = {m.id}key={m.id} date={m.timeAgo}  username={m.username}  title={m.title} location={m.location} />
         
         
                     })  
                     
-                    console.log(listingList,"printing-====")
+                   
 
 
         return (
         <List dense={false} className="List">
           
-          <ListingItem key={0} date={"1 day"}  username={"Rikenm"}  title={"IT Job"} location={"Revere, MA"} className="List"/>
-          <ListingItem key={1} date={"1 day"}  username={"Rikenm"}  title={"IT Job"} location={"Revere, MA"}/>
-          <ListingItem key={2} date={"1 day"}  username={"Rikenm"}  title={"IT Job"} location={"Revere, MA"}/>
-          <ListingItem key={3} date={"1 day"}  username={"Rikenm"}  title={"IT Job"} location={"Revere, MA"}/>
-          <ListingItem key={4} date={"1 day"}  username={"Rikenm"}  title={"IT Job"} location={"Revere, MA"}/>
+          
+          {listingList}
             
          </List>
         )

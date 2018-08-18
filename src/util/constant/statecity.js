@@ -20,6 +20,12 @@ export const USA_STATE_LIST=["AL",
 ,"KY"
 ,"LA"
 ,"ME"
+,"MD"
+,"MA"
+,"MI"
+,"MN"
+,"MS"
+,"MO"
 ,"MT"
 ,"NE"
 ,"NV"
@@ -32,12 +38,6 @@ export const USA_STATE_LIST=["AL",
 ,"OH"
 ,"OK"
 ,"OR"
-,"MD"
-,"MA"
-,"MI"
-,"MN"
-,"MS"
-,"MO"
 ,"PA"
 ,"RI"
 ,"SC"
@@ -51,8 +51,13 @@ export const USA_STATE_LIST=["AL",
 ,"WV"
 ,"WI"
 ,"WY"]
-export const AUSCITY=[]
-export const NEPCITY=[]
+export const AUS_STATE=["NSW","Qld","SA","Tas","Vic","WA"];
+export const NEPCITY=["Bhaktapur","Bharatpur","Biratnagar","Birgunj","Butwal","Dhangadhi","Dharan","Hetauda","Kathmandu","Kirtipur🏠","Lalitpur","Pokhara"]
 
 
+export const STATE_CITY_DICT ={
+     "USA" : USA_STATE_LIST,
+     "Australia" : AUS_STATE,
+     "Nepal" : NEPCITY
 
+}

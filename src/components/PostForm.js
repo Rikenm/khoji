@@ -7,18 +7,17 @@ import StepLabel from "@material-ui/core/StepLabel";
 import StepContent from "@material-ui/core/StepContent";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import Navbar from "../containers/Navbar"
-import purple from '@material-ui/core/colors/purple';
-
 import "../style/postform.css"
 import Preview from "../containers/preview";
+
+import {Category_LIST,Sub_Category_LIST} from "../util/constant/categorylist";
+import {STATE_CITY_DICT} from "../util/constant/statecity"
 
 
 
@@ -68,62 +67,109 @@ class VerticalLinearStepper extends React.Component {
     activeStep: 0,
     category: "",
     subCategory: "",
+    country: "",
+    secondary: "",
+    city: "",
+    body: "",
+    title: "",
+    contact: "",
+    name: ""
   };
 
-  handletextchange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
+
+  componentDidMount(){
+ 
+
+  
+   this.setState({ name: JSON.parse(localStorage.getItem("userInfo")).name
+     })
+  }
+
+ 
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  handleLocationChange = event => {
+    if (event.target.name == "country") {
+      this.setState({ [event.target.name]: event.target.value,
+                             secondary: "",
+                             city:""
+      
+      });
+    }else if (event.target.name == "secondary"){
 
-  getStepContent = (step, classes) => {
+      this.setState({ [event.target.name]: event.target.value,
+        city:"" 
+      
+      })
+    }else{
+      this.setState({ [event.target.name]: event.target.value})
+    }
+    
+  };
+
+
+  getStepContent = (step, classes) =>  {
     switch (step) {
       case 0:
         return (
           <div>
           
-            <FormControl className={classes.formControl} color="secondary">
+            <FormControl required className={classes.formControl} color="secondary">
               <InputLabel htmlFor="age-simple">Category</InputLabel>
               <Select color="secondary"
                 value={this.state.category}
                 onChange={this.handleChange}
-                name="age"
+                name="category"
                 inputProps={{
                   name: "category",
                   id: "category-simple"
                 }}
                 className={classes.selectEmpty}
               >
-                <MenuItem value="">All</MenuItem>
-                <MenuItem value="MA">Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                
+                {Category_LIST.map((item,id) => {
+
+                  return (<MenuItem key = {id} value={item}>{item}</MenuItem>)
+                
+                })
+                
+              }
+
               </Select>
               <FormHelperText>Required</FormHelperText>
             </FormControl>
             <br />
-            <FormControl className={classes.formControl}>
+            {
+            (typeof (this.state.category) != 'undefined' && this.state.category) ?
+            <FormControl required className={classes.formControl}>
               <InputLabel htmlFor="age-simple">Sub-Category</InputLabel>
               <Select
                 value={this.state.subCategory}
                 onChange={this.handleChange}
-                name="age"
+                name="subCategory"
                 inputProps={{
                   name: "subCategory",
                   id: "subCategory-simple"
                 }}
                 className={classes.selectEmpty}
               >
-                <MenuItem value="">All</MenuItem>
-                <MenuItem value="MA">Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {
+                   
+                          Sub_Category_LIST[this.state.category].subitems.map((item,id) => {
+
+                                return (<MenuItem key = {id} value={item.name}>{item.name}</MenuItem>)
+
+                        }) 
+                   
+
+                }
               </Select>
               <FormHelperText>Required</FormHelperText>
-            </FormControl>
+            </FormControl> : <div/>
+          }
           </div>
         );
       case 1:
@@ -132,61 +178,105 @@ class VerticalLinearStepper extends React.Component {
             <FormControl className={classes.formControl}>
               <InputLabel htmlFor="age-simple">Country</InputLabel>
               <Select
-                value={this.state.age}
-                onChange={this.handleChange}
-                name="age"
+                value={this.state.country}
+                onChange={this.handleLocationChange}
+                name="country"
                 inputProps={{
-                  name: "age",
-                  id: "age-simple"
+                  name: "country",
+                  id: "country-simple"
                 }}
                 className={classes.selectEmpty}
               >
-                <MenuItem value="">All</MenuItem>
-                <MenuItem value="MA">Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                
+                <MenuItem value="USA">USA</MenuItem>
+                <MenuItem value="Australia">Australia</MenuItem>
+                <MenuItem value="Nepal">Nepal</MenuItem>
               </Select>
               <FormHelperText>Required</FormHelperText>
             </FormControl>
-
+           <br/>
+           {
+            (typeof (this.state.country) != 'undefined' && this.state.country) ?
             <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="age-simple">City</InputLabel>
+              <InputLabel htmlFor="age-simple">{this.state.country=="Nepal"?"City":"State"}</InputLabel>
               <Select
-                value={this.state.age}
-                onChange={this.handleChange}
+                value={this.state.secondary}
+                onChange={this.handleLocationChange}
                 name="age"
                 inputProps={{
-                  name: "age",
+                  name: "secondary",
                   id: "age-simple"
                 }}
                 className={classes.selectEmpty}
               >
-                <MenuItem value="">All</MenuItem>
-                <MenuItem value="MA">Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+               {
+                  STATE_CITY_DICT[this.state.country].map((item)=>{
+                     return <MenuItem value={item}>{item}</MenuItem>
+
+                
+
+                })
+
+              }
               </Select>
               <FormHelperText>Required</FormHelperText>
-            </FormControl>
+            </FormControl> :<div/>
+           }
+            <br/>
+
+          {this.state.country == "USA" || this.state.country == "Australia"?  
+          <div>
+          <TextField 
+          label="City"
+          name = "city"
+          value = {this.state.city} 
+          onChange={this.handleLocationChange}
+          style={{width:220,  marginLeft: '+10px'}}
+       
+          
+          />
+         <FormHelperText style={{  marginLeft: '+10px'}}> Required</FormHelperText>
           </div>
+          
+           : <div/>}
+
+            
+          </div>
+
+            
+          
         );
       case 2:
         return (
           <div>
+            <TextField 
+            label="Title"
+            name = "title"
+            value = {this.state.title} 
+            onChange={this.handleChange}
+            style={{paddingBottom:20, width:400}}
+            />
+            <br/>
             <textarea
               placeholder="Please type here..."
-              name="value"
-              value={this.state.value}
+              name="body"
+              value={this.state.body}
               rows="12"
               cols="50"
-              onChange={this.handletextchange}
+              onChange={this.handleChange}
             />
 
             <br />
           </div>
         );
       default:
-        return <TextField/>;
+        return <TextField
+        label="Contact"
+            name = "contact"
+            value = {this.state.contact} 
+            onChange={this.handleChange}
+        
+        />;
     }
   };
 
@@ -220,7 +310,7 @@ class VerticalLinearStepper extends React.Component {
         <div className="container">
         {/* <p id="p_wrap">{this.state.value}</p> */}
 
-        <Preview post={this.state.value} />
+        <Preview post={this.state} />
 
         <Stepper activeStep={activeStep} orientation="vertical" color="secondary">
           {steps.map((label, index) => {
@@ -229,7 +319,7 @@ class VerticalLinearStepper extends React.Component {
               <Step key={label}>
                 <StepLabel>{label}</StepLabel>
                 <StepContent>
-                  <Typography>{this.getStepContent(index, classes)}</Typography>
+                  <div>{this.getStepContent(index, classes)}</div>
                   <br />
                   <div className={classes.actionsContainer}>
                     <div>
@@ -258,7 +348,7 @@ class VerticalLinearStepper extends React.Component {
         </div>
         {activeStep === steps.length && (
           <Paper square elevation={0} className={classes.resetContainer}>
-            <Typography>All steps completed - you&quot;re finished</Typography>
+            <div>All steps completed - you&quot;re finished</div>
             <Button onClick={this.handleReset} className={classes.button}>
               Reset
             </Button>

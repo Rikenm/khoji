@@ -8,22 +8,24 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import "../style/listitemstyle.css"
 
 
-const ListingItem = (date,id,username,title,location) => {
+const ListingItem = ({date,id,username,title,location}) => {
 
     //fetch
 
-    id =1112
+    
+
+    
 
     return(
         <ListItem className="List">
-        <div>Jul 4 </div>
+        <div>{date} </div>
         <ListItemText
          
            
-          secondary={true ? "Somerville, Ma" : null}
+          secondary={location}
         >
         <span >
-              <Link to= {`/post/${id}`} > "Software Engineering" </Link>
+              <Link to= {`/post/${id}`} > {title} </Link>
           </span>
 
         </ListItemText>
