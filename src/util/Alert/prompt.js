@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import { withStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -41,7 +41,7 @@ class Prompt extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState !== this.state) {
       
-     if (this.state.country == "USA") {
+     if (this.state.country === "USA") {
     
       this.props.onChange(this.state.country?this.state.country:"USA",this.state.state?this.state.state:"All");
 

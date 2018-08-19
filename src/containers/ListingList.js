@@ -6,49 +6,39 @@ import List from "@material-ui/core/List";
 import "../style/listitemstyle.css"
 
 class ListingList extends Component{
-
+   
     componentDidMount(){
-        // this.props.fetchListings();  //uncomment later
+        const {queryParameters,params} = this.props
+        if (!queryParameters.location|| ! queryParameters.search||! queryParameters.secondary){
+              this.props.history.push("/")
+        }else{
+
+          
+        this.props.fetchListings(queryParameters.location,queryParameters.secondary,queryParameters.search,params.category,params.subcategory);  //uncomment later
+
+
+        // console.log(this.props.params)
+         }
     }
 
     render(){
+         const {listings} = this.props
+            console.log("listing",listings)
 
-        // const {listings} = this.props //uncomment later
-        const listings = [{timeAgo:"July 5"
-                           ,
-                        id: 0,
-                        username: "Rikenm",
-                        title: "IT Job",
-                        
-                        location: "Revere,MA",
-                        },
-                        {timeAgo:"July 4"
-                        ,
-                     id: 1,
-                     username: "Biken",
-                     title: "Cashier",
-                    
-                     location: "Revere,MA"
-                     },
-                       {timeAgo:"July 4"
-                           ,
-                        id: 2,
-                        username: "Rikenm",
-                        title: "Marketing",
-                       
-                        location: "Revere,MA"
-                        }
-                    
-                    
-                    ]
+                     
+                var listingList = (listings.length != 0)?
 
-                    let listingList = listings.map(m =>{
-                       
-                        return <ListingItem id = {m.id}key={m.id} date={m.timeAgo}  username={m.username}  title={m.title} location={m.location} />
-        
-        
-                    })  
+                  
                     
+                     
+                    listingList = listings[0].data.map(m=>{
+
+                        return  <ListingItem id={m.id} date="Jul 7" title={m.title} location={m.country} username="Riken"/>
+                    })
+
+                
+                    :listingList = <div>No results </div>
+                  
                    
 
 
@@ -68,7 +58,9 @@ class ListingList extends Component{
 
 function mapStateToProps(state){
     return{
-        listing: state.listing
+        listings: state.list,
+        whichState: state.firstStateReducer.whichState,
+        errors: state.errors
     }
 }
 

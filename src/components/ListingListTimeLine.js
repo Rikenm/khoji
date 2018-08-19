@@ -4,13 +4,20 @@ import ListingList from "../containers/ListingList"
 import Navbar from "../containers/Navbar"
 import Typography from "@material-ui/core/Typography";
 import "../style/listitemstyle.css"
+import {connect} from "react-redux";
 
 const ListingListTimeLine = props => {
 
-    
-    let params = queryString.parse(props.location.search)
+    const {match} = props
+    let queryParams = queryString.parse(props.location.search) 
 
-    console.log(params)
+    console.log("before",queryParams)
+    
+    
+    let params = match.params
+
+
+    console.log("as-dksadf",queryParams,params)
 
     return(
         <div className ="row">
@@ -20,10 +27,10 @@ const ListingListTimeLine = props => {
             <Navbar/>
            <div className="list"> 
             <Typography variant="title" >
-              Category: Jobs
+              Category: {params.category} {params.subcategory?"> "+params.subcategory:<div/>}
             </Typography>
             
-            <ListingList /> 
+            <ListingList queryParameters={queryParams}params={params}{...props}/> 
 
             </div>
             
@@ -33,6 +40,9 @@ const ListingListTimeLine = props => {
         </div>
     )
 }
+
+
+
 
 export default ListingListTimeLine
 

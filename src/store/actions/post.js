@@ -1,6 +1,6 @@
 import {apiCall} from "../../services/api"
 import {addError} from "./error";
-import {LOAD_POST,REMOVE_LISTING} from "../actionTypes"
+import {LOAD_POST} from "../actionTypes"
 
 export const loadPost = (post) => {
      

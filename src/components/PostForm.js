@@ -57,7 +57,7 @@ function getSteps() {
   ];
 }
 
-const NUMBER_ITEMS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 
 class VerticalLinearStepper extends React.Component {
  
@@ -86,7 +86,7 @@ class VerticalLinearStepper extends React.Component {
   componentDidMount(){
  
 
-  if (typeof localStorage.getItem("userInfo") != undefined && localStorage.getItem("userInfo")){
+  if (typeof localStorage.getItem("userInfo") !== undefined && localStorage.getItem("userInfo")){
     this.setState({ name: JSON.parse(localStorage.getItem("userInfo")).name
       })
     }
@@ -110,19 +110,19 @@ componentWillUnmount(){
 
   handleLocationChange = event => {
     
-    if (event.target.value == "Nepal" ){
+    if (event.target.value === "Nepal" ){
       this.setState({
         state:"NEP"
       })
     }
 
-    if (event.target.name == "country") {
+    if (event.target.name === "country") {
       this.setState({ [event.target.name]: event.target.value,
                              state: "",
                              city:""
       
       });
-    }else if (event.target.name == "state"){
+    }else if (event.target.name === "state"){
 
       this.setState({ [event.target.name]: event.target.value,
         city:"" 
@@ -324,7 +324,7 @@ componentWillUnmount(){
 
     event.preventDefault()
 
-    console.log(this.state)
+   
     this.props.newPost(this.state).then((id) =>{
       
        
@@ -425,30 +425,7 @@ componentWillUnmount(){
                     }</div>
 
       </div>
-// ------
-  // <div>
-  //   <TextField 
-  //         label="City"
-  //         name = "city"
-  //         value = {this.state.city} 
-  //         onChange={this.handleLocationChange}
-  //         style={{width:220,  marginLeft: '+10px'}}
-       
-          
-  //         />
-  //         <button onClick={this.handleSubmit}> 
-
-  //           Submit
-  //         </button>
-
-  //         <div> {  //error
-                       
-  //                                       errors.message !== null? <Snackbar message= {errors.message}  />:<div/>
-                 
-                                        
-                                 
-  //                                    }</div>
-  //    </div>     
+   
       
     );
   }

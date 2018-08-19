@@ -21,25 +21,26 @@ if(localStorage.accessToken && localStorage.refreshToken && localStorage.userInf
 
       const user = JSON.parse(localStorage.getItem("userInfo"));
       console.log("first_visit_firstopen",localStorage.getItem("first_visit"))
-      if (localStorage.getItem("first_visit") == null){
-            localStorage.setItem("first_visit","World")
+      if (localStorage.getItem("first_visit") === null){
+           
+            localStorage.setItem("first_visit",JSON.stringify({country:"World",state:"World"}))
       }  
-      const whichState = localStorage.getItem("first_visit");
+      const whichState = JSON.parse(localStorage.getItem("first_visit"));
 
       store.dispatch(setCurrentUser(user))
       store.dispatch(firstState(whichState))
   }catch(e){
 
     console.log(e)
-    store.dispatch(setCurrentUser())
+    store.dispatch(setCurrentUser({}))
   }
 }else{
   
-      if (localStorage.getItem("first_visit") == null){
-            localStorage.setItem("first_visit","World")
-            store.dispatch(firstState("World"))
+      if (localStorage.getItem("first_visit") === null){
+        localStorage.setItem("first_visit",JSON.stringify({country:"World",state:"World"}))
+            store.dispatch(firstState({country:"World",state:"World"}))
       }else{
-        const whichState = localStorage.getItem("first_visit");
+        const whichState = JSON.parse(localStorage.getItem("first_visit"));
         store.dispatch(firstState(whichState))
       } 
 

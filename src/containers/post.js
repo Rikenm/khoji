@@ -28,63 +28,91 @@ class Post extends Component{
             <div >
                
                {/* {post[0].data[0] && ( */}
-            
-             <div>
+
+                { (typeof(post) !== "undefined" && post) ?
+
+                  
+                <div>
                   
                         
 
 
-                    <div>
+                <div>
 
-                    <div className="post"> 
-                            <div className="title"> 
+                <div className="post"> 
+                        <div className="title" style={{
+                                  fontSize: 20,
+                                  fontWeight : 800      
+
+                            }}> 
+                        
+                       {post.data[0].title}
                             
-                            Fridays for Friends - Bilingual Cantonese-English - Each Friday 6-9 (Longwood Medical Area, Boston (02115)) 
-                                
-                            </div>
-                            <div className = "sidebar">
-                                        <div className= "name">
-                                            Name<br/>
-                                        <div className= "name-value"> Riken Maharjan </div>
+                        </div>
+                        <div className = "sidebar">
+                                    <div className= "name">
+                                        Name<br/>
+                                    <div className= "name-value"> Riken Maharjan </div>
 
-                                        </div>    
-
-                                        <div className= "address">
-                                            Address<br/>
-                                            <div className= "address-value">  Long Beach, MA, USA</div>
-
-                                        </div>  
-
-                                        <div className= "contact">
-                                            Contact<br/>
-                                            <div className= "contact-value">    857-2091580  </div>
-
-                                        </div>  
-                                    <div className="low-sidebar">
-                                        <button className="btn-reply">
-                                            Reply
-                                            </button>
-
-                                        <button className="btn-save">
-                                            Save
-                                        </button>
                                     </div>    
 
+                                    <div className= "address">
+                                        Address<br/>
+                                         
+                                        { post.data[0].country != "Nepal"?
+                                            <div className= "address-value"> 
+                                                {post.data[0].city+", "}
+                                                {post.data[0].state+", "}  
+                                                {post.data[0].country}
+                                            
+                                            </div> :<div className= "address-value"> 
+                                            
+                                            {post.data[0].state+", "}  
+                                                {post.data[0].country}
+                                            
+                                            </div>
+                                        }
+                                        
+                                        
+
+                                    </div>  
+
+                                    <div className= "contact">
+                                        Contact<br/>
+                                        <div className= "contact-value">    857-2091580  </div>
+
+                                    </div>  
+                                <div className="low-sidebar">
+                                    <button className="btn-reply">
+                                        Reply
+                                        </button>
+
+                                    <button className="btn-save">
+                                        Save
+                                    </button>
+                                </div>    
+
+
+                        </div>
+
+                            <div className="body" style={{
+                                  fontSize: 20,
+                                  fontWeight : 500      
+
+                            }}>
+                            
+
+                                {post.data[0].description}
 
                             </div>
 
-                                <div className="body">
-                                
-
-                                    {/* {post} */}
-
-                                </div>
-
-                        </div>
                     </div>
-                </div>    
-              {/* //
-               )} */}
+                </div>
+            </div>  : "Loading"  
+                }
+            
+             
+              
                     
         </div>
         )
@@ -97,7 +125,7 @@ class Post extends Component{
 
 function mapStateToProps(state){
     return{
-        post: state.post
+        post: state.post.post
     }
 }
 

@@ -68,7 +68,11 @@ function CustomizedTable(props) {
           <TableRow>
             <CustomTableCell>
             <span >
-              <Link style={{color:"white"}} to= {`/listing/${data.name}?location=${whichState}`} > {data.name} </Link>
+              <Link style={{color:"white"}} to= {`/listing/${data.name}?location=${
+                
+                whichState.country
+                
+                }&secondary=${ whichState.state}&search=1`} > {data.name} </Link>
                   </span>
             </CustomTableCell>
           </TableRow>
@@ -80,7 +84,7 @@ function CustomizedTable(props) {
                 <CustomTableCell onClick={clicked} component="th" scope="row" key={i}>
                   
                   <span >
-              <Link to= {`/listing/${data.name}/${item.name}?location=${whichState}`} > {item.name} </Link>
+              <Link to= {`/listing/${data.name}/${item.name}?location=${ whichState.country}&secondary=${whichState.state}&search=1`} > {item.name} </Link>
                   </span>
                 </CustomTableCell>
                 

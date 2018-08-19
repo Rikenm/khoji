@@ -1,7 +1,4 @@
-import React, {Component} from "react";
-import {Link} from "react-router-dom";
-import {connect} from "react-redux";
-import Post from "./post"
+import React from "react";
 import "../style/preview.css"
 
 
@@ -27,7 +24,7 @@ return(
                         <div className="title"> 
                         
                         {
-                          post.title == ""? "Fridays for Friends - Bilingual Cantonese-English - Each Friday 6-9 (Longwood Medical Area, Boston (02115))" : post.title
+                          post.title === ""? "Fridays for Friends - Bilingual Cantonese-English - Each Friday 6-9 (Longwood Medical Area, Boston (02115))" : post.title
                         }  
                         </div>
                         <div className = "sidebar">
@@ -39,7 +36,7 @@ return(
 
                                     <div className= "address">
                                         Address<br/>
-                                        { post.country != "Nepal"?
+                                        { post.country !== "Nepal"?
                                          <div className= "address-value"> 
                                             {post.city?post.city+", ":"CITYHERE, "}
                                             {post.secondary?post.secondary+", ":"MA, "}  
@@ -60,7 +57,7 @@ return(
                                         Contact<br/>
                                         <div className= "contact-value">  
                                           { 
-                                             post.contact =="" ? "857-209-XXXX"  :post.contact
+                                             post.contact === "" ? "857-209-XXXX"  :post.contact
                                           }
                                           </div>
 

@@ -11,17 +11,17 @@ const Homepage = (props) => {
   Alertregister()
   console.log("Alert regiestered")
 
-  const {currentUser,whichState} = props
-  const stateButtonClicked = () => {
-      // if state is clicked
+  const {currentUser} = props
+  // const stateButtonClicked = () => {
+  //     // if state is clicked
 
         
-        props.firstState("MA")// need to insert the data
-        props.history.push("/")
+  //       props.firstState("MA")// need to insert the data
+  //       props.history.push("/")
         
 
 
-    }  
+  //   }  
 
 
   // const clicked = () =>{
@@ -35,14 +35,14 @@ const Homepage = (props) => {
 
   
       Popup.plugins().prompt("", "Type your name", function(country,state) {
-
+      
       //all right except when no update 
       if (country == null){
         country = "USA"
         state = "All"
       }
-        
-      props.firstState(state+", "+country)
+         
+      props.firstState({country:country,state:state})//state+", "+country)
         
         // dispatch location from here
         
@@ -72,7 +72,14 @@ return(
                        <div className="stateandtable">
                         <div className="stateSelected">
                         <div className="block1">You are currently checking listings at: </div> 
-                        <div className="block2" onClick={clicked2}> {first_visit?first_visit:"World"}</div>
+                        <div className="block2" onClick={clicked2}> 
+                        {first_visit?
+                        JSON.parse(first_visit).country !== "World"?
+                          JSON.parse(first_visit).state+", "+JSON.parse(first_visit).country: "World"
+              
+                          :"World"}
+                        
+                        </div>
                         </div>
                         <CategoryList {...props}/>
                       </div>
@@ -94,7 +101,11 @@ return(
      <div className="stateandtable">
                         <div className="stateSelected">
                         <div className="block1">You are currently checking listings at: </div> 
-                        <div className="block2" onClick={clicked2}>{first_visit?first_visit:"World"}</div>
+                        <div className="block2" onClick={clicked2}>{first_visit?
+                        JSON.parse(first_visit).country !== "World"?
+                          JSON.parse(first_visit).state+", "+JSON.parse(first_visit).country: "World"
+              
+                          :"World"}</div>
                         </div>
    <CategoryList {...props}/>
    </div>

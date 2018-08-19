@@ -19,7 +19,7 @@ export function firstState(whichState){
 
         
         return dispatch => {
-            localStorage.setItem("first_visit",whichState)
+            localStorage.setItem("first_visit",JSON.stringify(whichState))
             dispatch(State(whichState))
           }
        
