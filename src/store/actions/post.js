@@ -1,4 +1,4 @@
-import {apiCall} from "../../services/api"
+import {apiCall,apiCallNoReAuth} from "../../services/api"
 import {addError} from "./error";
 import {LOAD_POST} from "../actionTypes"
 
@@ -14,7 +14,7 @@ export const loadPost = (post) => {
 
 export const fetchPost = (postid) =>{
     return dispatch =>{
-            return apiCall("GET",`http://localhost:5012/api/v1/post/${postid}`)
+            return apiCallNoReAuth("GET",`http://localhost:5012/api/v1/post/${postid}`)
             .then((res)=>{
                    
                    dispatch(loadPost(res))
@@ -38,7 +38,7 @@ export const newPost = (data) =>{
         .then(res => {
              console.log(res)
             try {
-                resolve(res.data[0].insertId) 
+                resolve(res.data.data[0].insertId) 
                 
             }catch(err){
                 dispatch(addError("Error occured")) 

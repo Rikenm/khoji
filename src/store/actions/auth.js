@@ -1,4 +1,4 @@
-import {apiCall, setTokenHeader} from "../../services/api";
+import {apiCall, setTokenHeader, apiCallNoReAuth} from "../../services/api";
 import { Redirect } from 'react-router-dom'
 import {SET_CURRENT_USER} from "../actionTypes";
 import {addError, removeError} from "./error";
@@ -45,7 +45,7 @@ export function authUser(type,userData){
         console.log("datatoserver",userData)
         return new Promise((resolve,reject)=>{  // returning promise
 
-            return apiCall("post",`http://localhost:5012/api/v1/${type}`,userData).then(
+            return apiCallNoReAuth("post",`http://localhost:5012/api/v1/${type}`,userData).then(
                 res=>{
 
                 
@@ -63,7 +63,7 @@ export function authUser(type,userData){
                 resolve();
             }).catch(err =>{
                     
-                    console.log("here",err)
+                    
                     dispatch(addError(err.msg?err.msg:err)) //error // make biken change thid to message
                     reject()
 

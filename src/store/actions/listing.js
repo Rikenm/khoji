@@ -1,4 +1,4 @@
-import {apiCall} from "../../services/api"
+import {apiCall, apiCallNoReAuth} from "../../services/api"
 import {addError} from "./error";
 import {LOAD_LISTINGS} from "../actionTypes"
 
@@ -18,7 +18,7 @@ export const fetchListings = (location,state="All",page,category,subcategory="Al
     }
     const offset = 20* (page-1)
     return dispatch =>{
-            return apiCall("GET",`http://localhost:5012/api/v1/posts/${category}/${subcategory}?country=${location}&state=${state}&city=${city}&size=${20}&offset=${offset}`)
+            return apiCallNoReAuth("GET",`http://localhost:5012/api/v1/posts/${category}/${subcategory}?country=${location}&state=${state}&city=${city}&size=${20}&offset=${offset}`)
             .then((res)=>{
                 console.log("list",res)
                     dispatch(loadListings(res))
