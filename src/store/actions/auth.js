@@ -48,7 +48,7 @@ export function authUser(type,userData){
             return apiCallNoReAuth("post",`http://localhost:5012/api/v1/${type}`,userData).then(
                 res=>{
 
-                
+                //add try catch here
                 
                 var data = res.data[0]
 

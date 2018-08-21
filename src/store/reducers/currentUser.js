@@ -9,6 +9,7 @@ const DEFAULT_STATE ={
 export default (state = DEFAULT_STATE,action) => {
     switch (action.type){
         case SET_CURRENT_USER:
+          console.log("changing the login state")
             return {
 
                     isAuthenticated: Boolean(Object.keys(action.user).length),

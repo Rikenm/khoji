@@ -1,8 +1,11 @@
 import axios from "axios";
 import {logout} from "../store/actions/auth"
+import {configureStore} from "../store/index";
 
 
 //
+
+
 
 export function setTokenHeader(token){
     if(token){
@@ -61,8 +64,7 @@ export function apiCall(method,path,data){
                         // no reject just redirect 
                         console.log("force logout")
                         
-                        logout()
-                        return reject("Error! Please login again")
+                        return reject(new Error(401))
                        
     
                     }
@@ -110,19 +112,18 @@ function doReAuth(){
         console.log("in reauth")
 
         return new Promise((resolve,reject)=>{
-
+      
             if (localStorage.getItem("refreshToken")) {
            
                 const refreshToken = localStorage.getItem("refreshToken")   
                 setTokenHeader(refreshToken)  
                 axios["post"]("http://localhost:5012/api/v1/accesstoken").then(res=>{
         
+                   //add try catch here
                    
-        
                     setTokenHeader(res.data.data.access_token)
                     localStorage.setItem("refreshToken",res.data.data.refresh_token)
                     localStorage.setItem("accessToken",res.data.data.access_token)
-        
                     return resolve(true)
         
                 }).catch(err =>{
@@ -140,3 +141,10 @@ function doReAuth(){
         
 
 }
+
+// function forceLogout(){
+//     localStorage.removeItem("refreshToken")
+//     localStorage.removeItem("accessToken")
+//     localStorage.removeItem("userInfo")
+
+// }

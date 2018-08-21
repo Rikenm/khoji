@@ -20,6 +20,7 @@ import {Category_LIST,Sub_Category_LIST} from "../util/constant/categorylist";
 import {STATE_CITY_DICT} from "../util/constant/statecity"
 import {newPost} from "../store/actions/post"
 import TextField from "@material-ui/core/TextField";
+import {logout} from "../store/actions/auth"
 
 const styles = theme => ({
   root: {
@@ -349,7 +350,23 @@ componentWillUnmount(){
 
     })
     .catch((err)=>{
-       return 
+      console.log("hello in postform err catch",err.message)
+    try{  
+      if (err.message === "401"){
+          
+         this.props.logout()
+          this.props.history.push("/login")
+      }
+      else{
+        return 
+      }
+    }catch(ex){
+
+      return
+    }
+
+       
+       
     })
 
 
@@ -442,4 +459,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps,{newPost})(withStyles(styles)(VerticalLinearStepper));
+export default connect(mapStateToProps,{newPost,logout})(withStyles(styles)(VerticalLinearStepper));

@@ -41,8 +41,9 @@ export const newPost = (data) =>{
                 resolve(res.data.data[0].insertId) 
                 
             }catch(err){
-                dispatch(addError("Error occured")) 
-                console.log(err)
+                
+                dispatch(addError(err?err:"Error occured")) 
+                
                 reject(err) 
             }
 
