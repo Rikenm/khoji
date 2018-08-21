@@ -25,6 +25,7 @@ export const fetchListings = (location,state="All",page,category,subcategory="Al
                     
 
             }).catch(err=>{
+                dispatch(loadListings())
                 dispatch(addError(err.message))
             })
     }
