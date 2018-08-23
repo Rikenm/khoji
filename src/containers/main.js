@@ -14,6 +14,7 @@ import PostForm from "../components/PostForm";
 import ListingListTimeLine from "../components/ListingListTimeLine"
 import  PostPage from "../components/postPage"
 import {NotFound} from "../components/NotFound"
+import NewUserForm from "../components/NewUserForm"
 
 
 
@@ -145,6 +146,8 @@ return(
              <Route exact path ="/listing/:category/:subcategory?"  {...props}  component={ListingListTimeLine}/>
 
              <Route exact path = "/post/:postid" {...post} component={PostPage}/>
+
+             <Route exact path = "/token/:token" {...post} component={NewUserForm}/>
 
 
 

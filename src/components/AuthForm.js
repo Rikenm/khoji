@@ -1,7 +1,7 @@
 import React,{Component} from "react"
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
-
+import { ReCaptcha } from 'react-recaptcha-google'
 import {Link} from "react-router-dom";
 import Facebook from "../containers/Facebook";
 
@@ -25,12 +25,13 @@ const styles = theme => ({
 
 
 class AuthForm extends Component{
-    constructor(props){
-        super(props)
+    constructor(props, context){
+        super(props, context)
 
 
 
-
+        this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
+        this.verifyCallback = this.verifyCallback.bind(this);
         
   
         
@@ -41,7 +42,9 @@ class AuthForm extends Component{
             username:"",
             password:"",
             profileImageUrl:"",
-            userType: "custom"
+            userType: "custom",
+            isvalid : false,
+            email:""
             
 
 
@@ -49,6 +52,32 @@ class AuthForm extends Component{
 
 
         
+    }
+
+    componentDidMount(){
+
+        if (this.captchaDemo) {
+            console.log("started, just a second...")
+            this.captchaDemo.reset();
+           
+        }
+    }
+
+    onLoadRecaptcha() {
+        if (this.captchaDemo) {
+            console.log("loaded")
+            this.captchaDemo.reset();
+           
+        }
+    }
+    verifyCallback(recaptchaToken) {
+      // Here you will get the final recaptchaToken!!!  
+    //   console.log(recaptchaToken, "<= your recaptcha token")
+      if(recaptchaToken){
+          this.setState({
+              isvalid: true
+          })
+      }
     }
 
    
@@ -107,7 +136,8 @@ class AuthForm extends Component{
                             <form onSubmit={this.handleSubmit} noValidate autoComplete="off" >
                             
                               
-                            
+                            {!signUp && ( 
+                            <div>   
                              <div className="firstTextFieldAuthForm">
 
                                 <TextField className="textField"
@@ -142,49 +172,35 @@ class AuthForm extends Component{
                                  
                              </div> 
 
-                            {!signUp && (   
+                             
                                 <div>
-                             <button type="button"
-                             onClick ={this.handeleSubmit} 
-                             className="loginButton">
-                                        {this.props.buttonText}
-                                    </button>
-                                    <Link className="linktoSignUp" to="/signup">Sign Up</Link>  
+                                            <button type="button"
+                                            onClick ={this.handeleSubmit} 
+                                            className="loginButton">
+                                                        {this.props.buttonText}
+                                                    </button>
+                                                    <Link className="linktoSignUp" to="/signup">Sign Up</Link>  
 
-                            {/* <button
-                           
-                            className="facebookButton">
-                                        Facebook
-                            </button>  */}
+                                            
 
-                            <div className="facebookButton">
-                            
-                                <Facebook  addError={addError} {...this.props}/> {//facebookClick = {this.facebookClick}/>
-                                }
-                            </div>
+                                            <div className="facebookButton">
+                                            
+                                                <Facebook  addError={addError} {...this.props}/> {//facebookClick = {this.facebookClick}/>
+                                                }
+                                            </div>
 
-                               
+                                            
 
-                         <br/>
+                                        <br/>
                          </div>
+                         </div>  
                         )} 
                            
 
                                {signUp && (
                                         <div>
-                                        <div className="thirdTextFieldAuthForm">          
-                                            <TextField className="textField"
-                                                                                    
-                                            id="repeatpassword-input"
-                                            label="Repeat Password"
-                                            onChange={this.handleChange} 
-                                            
-                                            name="repeatpassword"
-                                            type="password"
-                                            
-                                            margin="normal"
-                                            />
-                                         </div>   
+                                            We will send you verification email on this email.
+                                          
                                             <br/>
                                         <div className="fourthTextFieldAuthForm">   
                                             <TextField className="textField"
@@ -200,8 +216,20 @@ class AuthForm extends Component{
                                             />
                                         </div>    
                                             <br/>
+                                            <ReCaptcha
+                                                ref={(el) => {this.captchaDemo = el;}}
+                                                size="normal"
+                                                render="explicit"
+                                                sitekey="6LdBhGsUAAAAAF2FpvrJ8svTsgT0SODsG3reqveS"
+                                                onloadCallback={this.onLoadRecaptcha}
+                                                verifyCallback={this.verifyCallback}
+                                            />
+                                                
+                                            
+                                            <br/>
 
                                             <button 
+                                            disabled = {!this.state.isvalid}
                                             type="button"
                                             className="signupButton"
                                             onClick = {this.handeleSubmit}>

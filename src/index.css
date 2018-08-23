@@ -317,6 +317,14 @@ height: 50px;
 
  }
 
+
+ .signupButton:disabled{
+
+  opacity: 0.5;
+  pointer-events: none;
+
+ }
+
  .stateSelected{
   position: absolute;
   left: 30px;

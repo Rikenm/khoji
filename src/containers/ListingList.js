@@ -54,7 +54,7 @@ class ListingList extends Component{
 
 
 
-                        return  <ListingItem  key ={m.id} id={m.id} date={getDate(m.date)} title={m.title} location={m.country} username="Riken"/>
+                        return  <ListingItem  key ={m.id} id={m.id} date={getDate(m.date)} title={m.title} location={m.country} city={m.city}  state={m.state}username="Riken"/>
                     })
 
                 

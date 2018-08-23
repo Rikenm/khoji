@@ -4,7 +4,7 @@ import ListingList from "../containers/ListingList"
 import Navbar from "../containers/Navbar"
 import Typography from "@material-ui/core/Typography";
 import "../style/listitemstyle.css"
-import {connect} from "react-redux";
+
 
 const ListingListTimeLine = props => {
 

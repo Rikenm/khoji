@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Provider} from "react-redux";
 import {configureStore} from "../store";
-
+import { loadReCaptcha } from 'react-recaptcha-google'
 import {BrowserRouter as Router} from "react-router-dom"
-import Navbar from "./Navbar"
+
 import Main from "./main"
 import { setAuthorizationToken, setCurrentUser } from '../store/actions/auth';
 // import jwtDecode from "jwt-decode";
@@ -48,8 +48,15 @@ if(localStorage.accessToken && localStorage.refreshToken && localStorage.userInf
 }
 
 
-const App = () =>{
+class App extends Component{
+
+
+  componentDidMount(){
+    loadReCaptcha();
+
+  }
  
+  render() {
   return (
 
     <Provider store={store}>
@@ -63,6 +70,7 @@ const App = () =>{
      </Router>
     </Provider>
   )
+}
 
 }
 
