@@ -11,20 +11,14 @@ import InputLabel from "@material-ui/core/InputLabel";
 const ListingListTimeLine = (props) => {
 
     const {match} = props
-    let queryParams = queryString.parse(props.location.search) 
+    let queryParams = queryString.parse(props.location.search)
 
-    
-    
-    
     let params = match.params
-
-
-    
 
     return(
         <div className ="listing-page">
 
-           
+   
           
             {/* <Navbar/>  */}
             <FormControl required  color="secondary">
@@ -57,22 +51,22 @@ const ListingListTimeLine = (props) => {
          
                 
                     <div className="title">
-                            Category: 
-                            {params.category} 
+                            Category:
+                            {params.category}
                             {params.subcategory?"> "+
                             params.subcategory
                             :<div/>}
-                    </div>  
-              
-                
+                    </div>
+
+
                     <div className="listing-list">
-                        <ListingList queryParameters={queryParams}params={params}{...props} /> 
+                        <ListingList queryParameters={queryParams}params={params}{...props} />
                     </div>
             </div>
-            
-        
-          
-            
+
+
+
+
         </div>
     )
 }
@@ -81,4 +75,3 @@ const ListingListTimeLine = (props) => {
 
 
 export default ListingListTimeLine
-
