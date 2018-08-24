@@ -14,69 +14,56 @@ return(
         Preview
         </nav>
             <div>
-
-                
-
-
                 <div>
-                
-                <div className="post"> 
-                        <div className="title"> 
-                        
+
+                <div className="post">
+                        <div className="title-second">
+
                         {
                           post.title === ""? "Fridays for Friends - Bilingual Cantonese-English - Each Friday 6-9 (Longwood Medical Area, Boston (02115))" : post.title
-                        }  
+                        }
                         </div>
                         <div className = "sidebar">
                                     <div className= "name">
                                         Name<br/>
                                        <div className= "name-value"> {post.name} </div>
 
-                                    </div>    
+                                    </div>
 
                                     <div className= "address">
                                         Address<br/>
                                         { post.country !== "Nepal"?
-                                         <div className= "address-value"> 
+                                         <div className= "address-value">
                                             {post.city?post.city+", ":"CITYHERE, "}
-                                            {post.secondary?post.secondary+", ":"MA, "}  
+                                            {post.secondary?post.secondary+", ":"MA, "}
                                             {post.country?post.country:"USA"}
-                                        
-                                        </div> :<div className= "address-value"> 
-                                           
-                                        {post.secondary?post.secondary+", ":"MA, "}  
+
+                                        </div> :<div className= "address-value">
+
+                                        {post.secondary?post.secondary+", ":"MA, "}
                                             {post.country?post.country:"USA"}
-                                        
+
                                         </div>
                                         }
-                                      
 
-                                    </div>  
+
+                                    </div>
 
                                     <div className= "contact">
                                         Contact<br/>
-                                        <div className= "contact-value">  
-                                          { 
+                                        <div className= "contact-value">
+                                          {
                                              post.contact === "" ? "857-209-XXXX"  :post.contact
                                           }
                                           </div>
 
-                                    </div>  
-                                 <div className="low-sidebar">
-                                    <button className="btn-reply">
-                                        Reply
-                                        </button>
-
-                                    <button className="btn-save">
-                                        Save
-                                    </button>
-                                </div>    
-
+                                    </div>
+                                 
 
                         </div>
 
                             <div className="body">
-                            
+
 
                                 {post.description}
 

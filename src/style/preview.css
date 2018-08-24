@@ -2,15 +2,15 @@
 
 
 .preview{
-   
-    width: 60%;   
+
+    width: 60%;
     height: 500px;
      top: 10%;
-     left: 60%; 
+     left: 60%;
       /* background-color: blue; */
      position: absolute;
      border-style: dotted;
- 
+
  }
 
 
@@ -20,11 +20,8 @@
     height: 9%;
     top: 0%;
     left: 0%;
-    
     position: absolute;
 
-    
-    
 }
 
 .post{
@@ -34,21 +31,19 @@
     height: 83%;
     position: absolute;
     /* background-color: green; */
-
-
 }
 
-.title{
+.title-second{
     width:92%;
     height: 10%;
-    left: 5%; 
+    left: 5%;
     font-size: 75%;
     position: absolute;
-    
+
     /* background-color: blueviolet; */
     font-weight: 200;
-   
-    
+
+
 }
 
 .sidebar{
@@ -59,46 +54,48 @@
     top: 10%;
     left: 5%;
     font-size: 80%;
-    height: 80%;
+    height: 85%;
     background: #eee;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     font-weight: bold;
-   
+
 }
 
 .name,.address,.contact{
 
+    ont-size: 15px;
     padding: 15%;
     /* background-color: chocolate; */
 }
 
 .body{
-
     /* background-color: crimson; */
-    width: 70%;
-    height: 90%;
+    width: 72%;
+    height: 85%;
     position: absolute;
     top: 10%;
     left: 30%;
-    font-size: 80%;
+    font-size: 90%;
     font-weight: 300;
-    background-color: rgb(240,240,240,0.5);
+    font-family:inherit;
+    background-color: rgb(240,240,240,0.3);
     overflow-x: hidden;
-    
     white-space: pre-line;
-    
+    background-color: rgb(240,240,240);
+    padding: 25px;
+    margin: 0% 0% 0% -4.8%;
+
 }
 
 .name-value,.address-value,.contact-value{
+    font-size: 15px;
     font-weight: 100;
-    
-
 }
 
 .address-value{
-    font-size: 80%;
+    font-size: 15px;
     overflow-x: hidden;
-    
+
 }
 
 .contact-value{
@@ -106,9 +103,8 @@
 }
 
 .low-sidebar{
-    height: 90%;
-    /* background-color: crimson; */
-    
+    height: 20%;
+
 }
 
 .btn-reply{
@@ -116,11 +112,11 @@
     color: white;
     border: none;
     width: 60%;
-    height: 10%;
+    height: 30%;
     position: relative;
     left: 20%;
     top: 10%;
-    
+
 }
 
 .btn-save{
@@ -129,18 +125,11 @@
     color: white;
     border: none;
     width: 50%;
-    height: 10%;
+    height: 30%;
     top: 20%;
     position: relative;
     left: 25%;
-    
+
     z-index: 1;
 
 }
-
-
-
-
-
-
-

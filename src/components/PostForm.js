@@ -31,21 +31,21 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: 200,
-   
+
   },
 
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 200,
-   
+
   },
   actionsContainer: {
     marginBottom: theme.spacing.unit * 2,
-    
+
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2,
-    
+
   }
 });
 
@@ -61,8 +61,8 @@ function getSteps() {
 
 
 class VerticalLinearStepper extends React.Component {
- 
- 
+
+
   constructor(props){
     super(props)
 
@@ -85,7 +85,7 @@ class VerticalLinearStepper extends React.Component {
 
 
   componentDidMount(){
- 
+
 
   if (typeof localStorage.getItem("userInfo") !== undefined && localStorage.getItem("userInfo")){
     this.setState({ name: JSON.parse(localStorage.getItem("userInfo")).name
@@ -103,14 +103,14 @@ componentWillUnmount(){
 //    return false
 // }
 
- 
+
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
   handleLocationChange = event => {
-    
+
     if (event.target.value === "Nepal" ){
       this.setState({
         state:"NEP"
@@ -121,18 +121,18 @@ componentWillUnmount(){
       this.setState({ [event.target.name]: event.target.value,
                              state: "",
                              city:""
-      
+
       });
     }else if (event.target.name === "state"){
 
       this.setState({ [event.target.name]: event.target.value,
-        city:"" 
-      
+        city:""
+
       })
     }else{
       this.setState({ [event.target.name]: event.target.value})
     }
-    
+
   };
 
 
@@ -141,7 +141,7 @@ componentWillUnmount(){
       case 0:
         return (
           <div>
-          
+
             <FormControl required className={classes.formControl} color="secondary">
               <InputLabel htmlFor="age-simple">Category</InputLabel>
               <Select color="secondary"
@@ -154,13 +154,13 @@ componentWillUnmount(){
                 }}
                 className={classes.selectEmpty}
               >
-                
+
                 {Category_LIST.map((item,id) => {
 
                   return (<MenuItem key = {id} value={item}>{item}</MenuItem>)
-                
+
                 })
-                
+
               }
 
               </Select>
@@ -182,13 +182,13 @@ componentWillUnmount(){
                 className={classes.selectEmpty}
               >
                 {
-                   
+
                           Sub_Category_LIST[this.state.category].subitems.map((item,id) => {
 
                                 return (<MenuItem key = {id} value={item.name}>{item.name}</MenuItem>)
 
-                        }) 
-                   
+                        })
+
 
                 }
               </Select>
@@ -212,7 +212,7 @@ componentWillUnmount(){
                 }}
                 className={classes.selectEmpty}
               >
-                
+
                 <MenuItem value="USA">USA</MenuItem>
                 <MenuItem value="Australia">Australia</MenuItem>
                 <MenuItem value="Nepal">Nepal</MenuItem>
@@ -238,7 +238,7 @@ componentWillUnmount(){
                   STATE_CITY_DICT[this.state.country].map((item)=>{
                      return <MenuItem value={item}>{item}</MenuItem>
 
-                
+
 
                 })
 
@@ -249,35 +249,35 @@ componentWillUnmount(){
            }
             <br/>
 
-          {this.state.country == "USA" || this.state.country == "Australia"?  
+          {this.state.country == "USA" || this.state.country == "Australia"?
           <div>
-          <TextField 
+          <TextField
           label="City"
           name = "city"
-          value = {this.state.city} 
+          value = {this.state.city}
           onChange={this.handleLocationChange}
           style={{width:220,  marginLeft: '+10px'}}
-       
-          
+
+
           />
          <FormHelperText style={{  marginLeft: '+10px'}}> Required</FormHelperText>
           </div>
-          
+
            : <div/>}
 
-            
+
           </div>
 
-            
-          
+
+
         );
       case 2:
         return (
           <div>
-            <TextField 
+            <TextField
             label="Title"
             name = "title"
-            value = {this.state.title} 
+            value = {this.state.title}
             onChange={this.handleChange}
             style={{paddingBottom:20, width:"55%"}}
             />
@@ -298,9 +298,9 @@ componentWillUnmount(){
         return <TextField
         label="Contact"
             name = "contact"
-            value = {this.state.contact} 
+            value = {this.state.contact}
             onChange={this.handleChange}
-        
+
         />;
     }
   };
@@ -319,16 +319,16 @@ componentWillUnmount(){
     }));
   };
 
-  
+
 
   handleSubmit = (event) => {
 
     event.preventDefault()
 
-   
+
     this.props.newPost(this.state).then((id) =>{
-      
-       
+
+
 
        this.setState({
         activeStep: 0,
@@ -342,8 +342,8 @@ componentWillUnmount(){
         contact: "",
         name: ""
       })
-      
-      
+
+
 
       this.props.history.push(`/post/${id}`)
 
@@ -351,22 +351,22 @@ componentWillUnmount(){
     })
     .catch((err)=>{
       console.log("hello in postform err catch",err.message)
-    try{  
+    try{
       if (err.message === "401"){
-          
+
          this.props.logout()
           this.props.history.push("/login")
       }
       else{
-        return 
+        return
       }
     }catch(ex){
 
       return
     }
 
-       
-       
+
+
     })
 
 
@@ -386,6 +386,7 @@ componentWillUnmount(){
         {/* <p id="p_wrap">{this.state.value}</p> */}
 
         <Preview post={this.state} className="preview" />
+        
       <div className="stepper-form">
       <form onSubmit = {this.handleSubmit}>
         <Stepper activeStep={activeStep} orientation="vertical" color="secondary" className="stepper">
@@ -410,19 +411,19 @@ componentWillUnmount(){
                        type="submit"
                         variant="contained"
                         color="primary"
-                        
+
                         className={classes.button}
                       > Submit
                         {/* {activeStep === steps.length - 1 ? "Submit" : "Next"} */}
-                      </Button> : 
-                      
+                      </Button> :
+
                      <Button
                         variant="contained"
                         color="primary"
                         onClick={this.handleNext}
                         className={classes.button}
                       > Next
-                      
+
                       </Button> }
                     </div>
                   </div>
@@ -432,20 +433,20 @@ componentWillUnmount(){
           })}
         </Stepper>
         </form>
-        </div>  
         </div>
-        
+        </div>
+
         <div> {  //error
-                       
+
                        errors.message !== null? <Snackbar message= {errors.message}  />:<div/>
 
-                       
-                
+
+
                     }</div>
 
       </div>
-   
-      
+
+
     );
   }
 }

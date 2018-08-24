@@ -1,5 +1,6 @@
 import Table from "../util/table/table"
 import React from "react";
+import {Grid,Row,Col} from 'react-bootstrap'
 import '../style/categoryStyling.css';
 import {connect} from "react-redux";
 
@@ -56,10 +57,9 @@ export const CategoryList = (props)=>{
 
     return(
 
-    <div className="fatherTable">   
+    <div className="fatherTable">
 
-      
-    <div className="table1">   
+    <div className="table1">
     <Table whichState={whichState} data={table1Data()}/>
     </div>
 
@@ -76,20 +76,19 @@ export const CategoryList = (props)=>{
     </div>
 
     <div className="table5">
-    <Table whichState={whichState} data={table2Data()}/>
+    <Table whichState={whichState} data={table5Data()}/>
     </div>
 
     <button type = "button"
     onClick = {clicked}
-    
+
     className="postButton">
 
         Post Your Listing
         </button>
-
-    
-
+        
     </div>
+
 
     )
 
