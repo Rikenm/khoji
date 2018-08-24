@@ -12,6 +12,8 @@ import {firstState} from "../store/actions/checkFirstTime"
 
 const store = configureStore()
 
+// localStorage.setItem("first_visit",JSON.stringify({country:"World",state:"World"}))
+
 if(localStorage.accessToken && localStorage.refreshToken && localStorage.userInfo){
   setAuthorizationToken(localStorage.accessToken)
 

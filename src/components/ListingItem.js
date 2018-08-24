@@ -24,9 +24,9 @@ const ListingItem = ({date,id,username,title,location,city,state}) => {
            
           secondary={city+", "+statevalue+location}
         >
-        <span >
+        <div className="list-title">
               <Link to= {`/post/${id}`} > {title} </Link>
-          </span>
+          </div>
 
         </ListItemText>
         <ListItemSecondaryAction className="ListItemSecondaryAction">

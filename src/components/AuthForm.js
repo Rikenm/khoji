@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { ReCaptcha } from 'react-recaptcha-google'
 import {Link} from "react-router-dom";
 import Facebook from "../containers/Facebook";
+import {validate} from "../services/validate"
+import "../style/auth.css"
 
 
 
@@ -36,19 +38,28 @@ class AuthForm extends Component{
   
         
         
-        this.state = {
-            userEmail:"",
-            secret: "asdf",
-            username:"",
-            password:"",
-            profileImageUrl:"",
-            userType: "custom",
-            isvalid : false,
-            email:""
+        // this.state = {
+        //     secret: "asdf",
+        //     username:"",
+        //     password:"",
+        //     profileImageUrl:"",
+        //     userType: "custom",
+        //     isvalid : false,
+        //     email:""
             
 
 
-        }//add few things later
+        // }//add few things later
+
+        this.state = {
+              secret : "asdf",
+              username : {value:"",isValid:true},
+              password : {value:"",isValid:true},
+              userType:"custom",
+              email: {value:"",isValid:true},
+              isvalid: false
+
+        }
 
 
         
@@ -86,7 +97,7 @@ class AuthForm extends Component{
 
     handleChange = e => {
             this.setState({
-                [e.target.name]: e.target.value
+                [e.target.name]: {"value": e.target.value,isValid:"true"}
             })
 
     }
@@ -95,7 +106,10 @@ class AuthForm extends Component{
         // submitting the form
         e.preventDefault();
         const authType = this.props.signUp ? "user" : "login" ;
-        this.props.onAuth(authType, this.state)
+        const validator = this.props.signUp ? this.state.email.isValid : this.state.email.isValid && this.state.password.isValid 
+        const data = this.props.signUp?{email:this.state.email.value,type:"userType"}:{email:this.state.email.value,password:this.state.password.value}
+        if(validator){
+        this.props.onAuth(authType, data)
         .then(()=>{
             // take to the homepage
 
@@ -106,6 +120,23 @@ class AuthForm extends Component{
             console.log("hellof from the catch")
             return
         })
+    } else{
+        
+        this.setState({secret:"asf"})
+    }
+
+    }
+
+    handleBlur = e => {
+ 
+    this.setState({
+        [e.target.name] :{
+            value: e.target.value,
+            isValid: validate(e.target.value,e.target.name)
+        }
+    })
+       
+       
 
     }
 
@@ -116,8 +147,8 @@ class AuthForm extends Component{
         
 
         
-        const {email, username, password} = this.state
-        const {heading, buttonText, signUp,errors, history,removeError, addError} = this.props
+        // const {email, username, password} = this.state
+        const { signUp, history,removeError, addError} = this.props
         
         
         history.listen(()=>{
@@ -145,10 +176,11 @@ class AuthForm extends Component{
                                         id="username"
                                         label="Email"
                                         onChange={this.handleChange} 
-                                        
-                                        name="userEmail"
-                                        type="text"
-                                       
+                                        onBlur = {this.handleBlur}
+                                        name="email"
+                                        error = {this.state.email.isValid?false:true}
+                                        helperText={this.state.email.isValid?"":"Invalid email"}
+                                        type= "email"
                                         margin="normal"
                                         
                                 />
@@ -162,9 +194,11 @@ class AuthForm extends Component{
                                         id="password-input"
                                         label="Password"
                                         onChange={this.handleChange} 
-                                        
+                                        onBlur = {this.handleBlur}
                                         name="password"
                                         type="password"
+                                        error = {this.state.password.isValid?false:true}
+                                        helperText={this.state.password.isValid?"":"Password should not be empty"}
                                         autoComplete="current-password"
                                         margin="normal"
                                 />
@@ -199,7 +233,7 @@ class AuthForm extends Component{
 
                                {signUp && (
                                         <div>
-                                            We will send you verification email on this email.
+                                            <h5 className="emailLabel">We will send you verification email on this email.</h5>
                                           
                                             <br/>
                                         <div className="fourthTextFieldAuthForm">   
@@ -208,15 +242,18 @@ class AuthForm extends Component{
                                             id="email"
                                             label="Email"
                                             onChange={this.handleChange} 
-                                            
+                                            onBlur = {this.handleBlur}
                                             name="email"
                                             type="email"
-                                            
+                                            error = {this.state.email.isValid?false:true}
+                                            helperText={this.state.email.isValid?"":"Invalid email"}
                                             margin="normal"
                                             />
                                         </div>    
                                             <br/>
+                                            <div className = "captcha">
                                             <ReCaptcha
+                                                
                                                 ref={(el) => {this.captchaDemo = el;}}
                                                 size="normal"
                                                 render="explicit"
@@ -224,6 +261,7 @@ class AuthForm extends Component{
                                                 onloadCallback={this.onLoadRecaptcha}
                                                 verifyCallback={this.verifyCallback}
                                             />
+                                            </div>
                                                 
                                             
                                             <br/>

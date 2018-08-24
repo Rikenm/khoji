@@ -20,6 +20,10 @@
 
         top: 10%;
         position: absolute;
+       
+        width: 100%;
+    
+
 
       }
 
@@ -31,6 +35,8 @@
       }
 
       
+
+    
 
   
      
@@ -70,16 +76,26 @@
 
    
     textarea {
-        width: 80%;
+        width: 60%;
         
       }
 
       .container{
 
         top: 10%;
+        left: 30%;
         position: absolute;
 
       }
+
+      .preview{
+
+        display: none
+      }
+    
+
+      
+      
 
     
   }
@@ -94,15 +110,21 @@
    
    
     textarea {
-        width: 60%;
+        width: 80%;
         
       }
 
       .container{
 
-        top: 15%;
+        top: 10%;
+        left: 30%;
         position: absolute;
 
+      }
+
+      .preview{
+
+        display: none
       }
     
     
@@ -116,15 +138,21 @@
   @media (min-width: 481px) and (max-width: 767px) {
 
     textarea {
-        width: 100%;
+        width: 90%;
         
       }
 
       .container{
 
         top: 10%;
+        left: 15%;
         position: absolute;
 
+      }
+
+      .preview{
+
+        display: none
       }
 
 
@@ -147,15 +175,21 @@
   @media (min-width: 320px) and (max-width: 480px) {
 
     textarea {
-        width: 100%;
-        
-      }
+      width: 90%;
+      
+    }
 
-      .container{
+    .container{
 
-        top: 10%;
-        position: absolute;
+      top: 10%;
+      left: 15%;
+      position: absolute;
 
+    }
+
+      .preview{
+
+        display: none
       }
    
   

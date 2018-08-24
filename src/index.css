@@ -296,14 +296,7 @@ height: 50px;
 
  }
 
- .fourthTextFieldAuthForm{
-  position: absolute;
-  left: 50%;
-  top: 65%;
-  width:70%;
-  transform: translate(-50%,-50%);
-
- }
+ 
 
  .signupButton{
   border: none;

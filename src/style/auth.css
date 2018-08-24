@@ -1,0 +1,281 @@
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+
+
+    .fourthTextFieldAuthForm{
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        width:70%;
+        transform: translate(-50%,-50%);
+      
+       }
+
+       .captcha{
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%,-50%);
+
+       }
+
+       .emailLabel{
+
+        text-align: center;
+        font-weight: 500;
+        font-size: 90%
+       }
+
+  
+   
+  }
+  
+  /* 
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+  */
+  
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    .authCard{
+
+        width: 50%;
+        height: 604px;
+        
+        background-color:white;
+       
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        
+        transform: translate(-50%,-50%);
+      
+      }
+      .fourthTextFieldAuthForm{
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        width:70%;
+        transform: translate(-50%,-50%);
+      
+       }
+
+       .captcha{
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%,-50%);
+
+       }
+
+       .emailLabel{
+
+        text-align: center;
+        font-weight: 500;
+        font-size: 90%
+       }
+
+   
+    
+  }
+  
+  /* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .authCard{
+
+        width: 65%;
+        height: 604px;
+        
+        background-color: white;
+       
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        
+        transform: translate(-50%,-50%);
+      
+      }
+
+      .fourthTextFieldAuthForm{
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        width:70%;
+        transform: translate(-50%,-50%);
+      
+       }
+
+       .captcha{
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%,-50%);
+
+       }
+
+       .emailLabel{
+
+        text-align: center;
+        font-weight: 500;
+        font-size: 90%
+       }
+
+    
+   
+    
+  }
+  
+  /* 
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+  */
+  
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    
+    .authCard{
+
+        width: 50%;
+        height: 604px;
+        
+        background-color:white;
+       
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        
+        transform: translate(-50%,-50%);
+      
+      }
+
+      .fourthTextFieldAuthForm{
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        width:70%;
+        transform: translate(-50%,-50%);
+      
+       }
+
+       .captcha{
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%,-50%);
+
+       }
+
+       .emailLabel{
+
+        text-align: center;
+        font-weight: 500;
+        font-size: 90%
+       }
+
+    
+  }
+  
+  /* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+  
+  @media (min-width: 481px) and (max-width: 767px) {
+    .authCard{
+
+        width: 70%;
+        height: 604px;
+        
+        background-color:white;
+       
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        
+        transform: translate(-50%,-50%);
+      
+      }
+      .fourthTextFieldAuthForm{
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        width:70%;
+        transform: translate(-50%,-50%);
+      
+       }
+
+       .captcha{
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%,-50%);
+
+       }
+
+       .emailLabel{
+
+        text-align: center;
+        font-weight: 500;
+        font-size: 90%
+       }
+
+
+    
+    
+    
+  }
+  
+  /* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+  
+  @media (min-width: 320px) and (max-width: 480px) {
+
+    .authCard{
+
+        width: 90%;
+        height: 604px;
+        
+        background-color: white;
+       
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        
+        transform: translate(-50%,-50%);
+      
+      }
+
+
+      .fourthTextFieldAuthForm{
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        width:70%;
+        transform: translate(-50%,-50%);
+      
+       }
+
+       .captcha{
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%,-50%);
+
+       }
+
+       .emailLabel{
+
+        text-align: center
+       }
+ 
+    
+  }

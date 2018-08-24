@@ -25,9 +25,7 @@ class ListingList extends Component{
          
     }
 
-    componentWillUnmount(){
-       console.log("unmount")
-    }
+   
     render(){
          const {listings} = this.props
          const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
@@ -42,7 +40,7 @@ class ListingList extends Component{
 
 
 
-            console.log("listing",listings)
+          
 
                      
                 var listingList = (listings.length != 0 )?
@@ -58,7 +56,7 @@ class ListingList extends Component{
                     })
 
                 
-                    :listingList = <div>No results </div>
+                    :listingList = <div>No result </div>
                   
                    
 

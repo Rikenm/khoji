@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {logout} from "../store/actions/auth";
 import "../style/categoryStyling.css"
+import Logo from "../util/images/Bhakthapur-temples-2@3x.png"
 
 class NavBar extends Component{
 
@@ -20,7 +21,7 @@ class NavBar extends Component{
        <nav className="navbar navbar-expand fixed-top">
         <div className = "container-fluid"> 
             <Link to = "/" className="navbar-brand">
-                 <img src="" alt="Khoji"/>
+                 <img src={Logo} style={{width: '60px', height: '60px'}}/>
             </Link>
 
             {this.props.currentUser.isAuthenticated ? (

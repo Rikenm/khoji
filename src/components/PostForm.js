@@ -279,7 +279,7 @@ componentWillUnmount(){
             name = "title"
             value = {this.state.title} 
             onChange={this.handleChange}
-            style={{paddingBottom:20, width:400}}
+            style={{paddingBottom:20, width:"55%"}}
             />
             <br/>
             <textarea
@@ -385,7 +385,8 @@ componentWillUnmount(){
         <div className="container">
         {/* <p id="p_wrap">{this.state.value}</p> */}
 
-        <Preview post={this.state} />
+        <Preview post={this.state} className="preview" />
+      <div className="stepper-form">
       <form onSubmit = {this.handleSubmit}>
         <Stepper activeStep={activeStep} orientation="vertical" color="secondary" className="stepper">
           {steps.map((label, index) => {
@@ -431,6 +432,7 @@ componentWillUnmount(){
           })}
         </Stepper>
         </form>
+        </div>  
         </div>
         
         <div> {  //error

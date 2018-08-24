@@ -2,36 +2,45 @@ import React from "react"
 import queryString from  'query-string';
 import ListingList from "../containers/ListingList"
 import Navbar from "../containers/Navbar"
-import Typography from "@material-ui/core/Typography";
+
 import "../style/listitemstyle.css"
 
 
-const ListingListTimeLine = props => {
+const ListingListTimeLine = (props) => {
 
     const {match} = props
     let queryParams = queryString.parse(props.location.search) 
 
-    console.log("before",queryParams)
+    
     
     
     let params = match.params
 
 
-    console.log("as-dksadf",queryParams,params)
+    
 
     return(
-        <div className ="row">
+        <div className ="listing-page">
 
            
           
-            <Navbar/>
-           <div className="list"> 
-            <Typography variant="title" >
-              Category: {params.category} {params.subcategory?"> "+params.subcategory:<div/>}
-            </Typography>
+            <Navbar/> 
             
-            <ListingList queryParameters={queryParams}params={params}{...props}/> 
-
+           <div className="list"> 
+         
+                
+                    <div className="title">
+                            Category: 
+                            {params.category} 
+                            {params.subcategory?"> "+
+                            params.subcategory
+                            :<div/>}
+                    </div>  
+              
+                
+                    <div className="listing-list">
+                        <ListingList queryParameters={queryParams}params={params}{...props} /> 
+                    </div>
             </div>
             
         
