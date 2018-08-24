@@ -25,6 +25,8 @@ const ListingListTimeLine = (props) => {
            
           
             <Navbar/> 
+
+            
             
            <div className="list"> 
          
