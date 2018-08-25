@@ -22,7 +22,7 @@ const CustomTableCell = withStyles(theme => ({
 const styles = theme => ({
   root: {
     width: "100%",
-    
+
     marginTop: theme.spacing.unit * 3
   },
   table: {
@@ -51,7 +51,7 @@ const data = [
 
 function CustomizedTable(props) {
   const { classes, data, whichState } = props;
-  
+
   console.log(props,"aflsdlkj=====")
 
 
@@ -61,17 +61,17 @@ function CustomizedTable(props) {
 
   return (
 
-    
+
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
             <CustomTableCell>
             <span >
-              <Link style={{color:"white"}} to= {`/listing/${data.name}?location=${
-                
+              <Link style={{color:"white",fontSize:"23px",fontFamily:"Bungee Inline"}} to= {`/listing/${data.name}?location=${
+
                 whichState.country
-                
+
                 }&secondary=${ whichState.state}&search=1`} > {data.name} </Link>
                   </span>
             </CustomTableCell>
@@ -82,12 +82,12 @@ function CustomizedTable(props) {
             return (
               <TableRow className={classes.row} key={i}>
                 <CustomTableCell onClick={clicked} component="th" scope="row" key={i}>
-                  
-                  <span >
-              <Link to= {`/listing/${data.name}/${item.name}?location=${ whichState.country}&secondary=${whichState.state}&search=1`} > {item.name} </Link>
-                  </span>
+
+                  <div>
+              <Link style={{color:"black", fontSize:"18px", fontFamily:"Abel"}} to= {`/listing/${data.name}/${item.name}?location=${ whichState.country}&secondary=${whichState.state}&search=1`} > {item.name} </Link>
+                  </div>
                 </CustomTableCell>
-                
+
               </TableRow>
             );
           })}

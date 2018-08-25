@@ -21,24 +21,24 @@ import NewUserForm from "../components/NewUserForm"
 // routing logic
 const Main = props => {
 
-    
+
     const {authUser,errors, removeError, currentUser,whichState,firstState,facebookError,post} = props
 
     console.log("main's error",errors)
     console.log("main's props",props)
 
-    
+
 return(
     // <div className = "container">
 
 
-    
+
      <Switch>
-            <Route exact path="/" 
-                render= { props => 
+            <Route exact path="/"
+                render= { props =>
                      <div>
-                      
-                       <Homepage 
+
+                       <Homepage
                       firstState = {firstState}
                        whichState = {whichState}
                        currentUser= {currentUser}
@@ -46,50 +46,50 @@ return(
                        </div>
                  }
             />
-            <Route exact path="/signup" 
-                render= { props => 
+            <Route exact path="/signup"
+                render= { props =>
                     <div>
-                   {currentUser.isAuthenticated == false ? <AuthForm 
+                   {currentUser.isAuthenticated == false ? <AuthForm
                     errors ={errors}
                     removeError = {removeError}
                     addError = {facebookError}
                     facebookremoveError = {facebookremoveError}
                     onAuth = {authUser} buttonText="Sign up" heading="join khoji"{...props} signUp
 
-                 
-                    
+
+
                     /> : <Redirect to='/' />
                    }
-                     <div> { 
-                       
+                     <div> {
+
                        errors.message !== null? <Snackbar message= {errors.message}  />:<div/>
 
-                       
-                
+
+
                     }</div>
-                    
+
                     </div>
                  }
             />
 
-            <Route exact path="/login" 
-                render= { props => 
+            <Route exact path="/login"
+                render= { props =>
                       <div>
-                          {currentUser.isAuthenticated == false ? 
-                       <AuthForm 
+                          {currentUser.isAuthenticated == false ?
+                       <AuthForm
                        errors ={errors}
                        removeError = {removeError}
                        addError = {facebookError}
                        facebookremoveError = {facebookremoveError}
                        onAuth = {authUser} buttonText="Log in" heading="Welcome Back"{...props}/>
                        : <Redirect to='/' />
-                   }     
+                   }
 
-                       <div> 
-                       
-                       
-                       { 
-                       
+                       <div>
+
+
+                       {
+
                        errors.message !== null? <Snackbar message= {errors.message}  />:<div/>
 
                     }</div>
@@ -98,11 +98,11 @@ return(
             />
 
             {/* <Route exact path ="/createlisting" component={ListingForm} */}
-            
+
             />
-          
+
             <Route exact path="/newPost"
-               
+
             // need Auth HOC
 
         //     component = { withAuth(PostForm) }
@@ -117,18 +117,18 @@ return(
             //--------
 
             // render = { props => {
-                
+
             //     return (<PostForm {...props}></PostForm>)
             //      }
 
 
             // }
 
-           
-            render = { props => 
+
+            render = { props =>
 
                 <div>
-                {currentUser.isAuthenticated == true ? 
+                {currentUser.isAuthenticated == true ?
 
                     <PostForm {...props}/>  :  <Redirect to='/login' />
 
@@ -137,9 +137,9 @@ return(
 
             }
 
-            
 
-           
+
+
              />
 
 
@@ -155,31 +155,31 @@ return(
 
              <Route  component={NotFound} />
 
-           
 
-            
+
+
     </Switch>
 
-    
 
-   
 
-   
+
+
+
 )
 
 }
 function mapStateToProps(state){
 
-   
-   
 
-    
+
+
+
     return{
         currentUser: state.currentUser,
         errors: state.errors,
         whichState: state.firstStateReducer.whichState,
-      
-       
+
+
     }
 }
 
@@ -189,7 +189,7 @@ function mapStateToProps(state){
 //         removeError:() => dispatch(removeError()),
 //         authUser: (type,userData) => dispatch(authUser(type,userData))
 //     }
-    
+
 // )
 
 

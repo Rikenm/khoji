@@ -1,41 +1,41 @@
 
 
 /* .encapsule {
-   
-    
+
+
    padding-right: 40%;
 
 
   } */
-  
+
   .save-button,
   .delete-button {
     display: inline;
     font-style: normal;
     font-weight:100;
-   
-    
+
+
 
   }
-  
+
   .save-button {
-    
+
     /* margin-right:80%;  */
     position: absolute;
    right: 60px;
-    
+
     color: #0ED623;
-   
+
 
   }
 
-  
+
 
   .delete-button {
     /* margin-right:80%;  */
     color: #FF0000;
-    
-   
+
+
   }
 
 
@@ -44,12 +44,12 @@
       position: absolute;
       top: 20%;
       
-      
+
 
 
   }
 
-  
+
 
   /* .ListItemSecondaryAction{
 
@@ -73,14 +73,14 @@
     height:70px;
     color:white;
     font-size: 150%;
-    
+
   }
 
   .listing-list{
     position: absolute;
     top: 60px;
     width:100%;
-    
+
     background-color:green;
 
   }
@@ -90,8 +90,8 @@
     top: 0%;
     width:100%;
     height:100%;
-    
-   
+
+
 
   }
 
@@ -103,15 +103,15 @@
 
   .list-title{
    background: rgb(214, 134, 14);
-   
-    
+
+
   }
 
-  
+
 
   @media (min-width: 481px) and (max-width: 767px) {
 
-   
+
     .title{
       position: absolute;
       top: 40;
@@ -119,40 +119,40 @@
       width:100%;
       font-weight: 500;
       text-overflow: clip;
-      
+
     }
 
     .list-title{
       background: rgb(214, 134, 14);
-      
-      text-overflow: ellipsis; 
-      
-      white-space: nowrap; 
+
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
       width: 80%;
       font-size: 70%;
       overflow: hidden;
       border: 1px solid #000000;
-      
-      
-       
+
+
+
      }
-  
+
 
 
 
     }
 
 
-    
- 
-    
-  
-  
-  /* 
+
+
+
+
+
+  /*
     ##Device = Most of the Smartphones Mobiles (Portrait)
     ##Screen = B/w 320px to 479px
   */
-  
+
   @media (min-width: 320px) and (max-width: 480px) {
 
     .title{
@@ -160,42 +160,42 @@
       top: 40;
       font-size: 100%;
       font-weight: 500;
-     
-     
+
+
     }
 
     .list-title{
       background: rgb(214, 134, 14);
-      
-      text-overflow: ellipsis; 
-      
-      white-space: nowrap; 
+
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
       width: 70%;
       font-size: 70%;
       overflow: hidden;
       border: 1px solid #000000;
-      
-      
-       
+
+
+
      }
-   
-   
-  
-    
+
+
+
+
   }
-  
+
 
   .listing-page{
     width:100%;
-    margin:auto; 
-    height:100%; 
+    margin:auto;
+    height:100%;
     background-color: #F00;
-    overflow:auto; 
-    
-    
+    overflow:auto;
+
+
   }
 
- 
+
 
   /* .clearfix:after {
     content: "";

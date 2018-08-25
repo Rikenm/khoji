@@ -40,7 +40,7 @@ class Post extends Component{
                                 }}>
                              {post.data[0].title}
                            </div>
-                          </pre> 
+                          </pre>
 
                             <div className = "sidebar">
                                         <div className= "name">
@@ -80,9 +80,7 @@ class Post extends Component{
                                             Reply
                                             </button>
 
-                                        <button className="btn-save">
-                                            Save
-                                        </button>
+                        
                                     </div>
                             </div>
 
