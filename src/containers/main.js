@@ -143,7 +143,7 @@ return(
              />
 
 
-             <Route exact path ="/listing/:category/:subcategory?"  {...props}  component={ListingListTimeLine}/>
+             <Route exact path ="/listing/:category(Community|Services|Jobs|Housing|For Sale)/:subcategory?"  {...props}  component={ListingListTimeLine}/>
 
              <Route exact path = "/post/:postid" {...post} component={PostPage}/>
 

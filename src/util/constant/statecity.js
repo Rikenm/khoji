@@ -1,6 +1,6 @@
 
 
-export const USA_STATE_LIST=["AL",
+export const USA_STATE_LIST=["All","AL",
 "AK",
 "AZ",
 "AR",
@@ -51,8 +51,8 @@ export const USA_STATE_LIST=["AL",
 ,"WV"
 ,"WI"
 ,"WY"]
-export const AUS_STATE=["NSW","Qld","SA","Tas","Vic","WA"];
-export const NEPCITY=["Bhaktapur","Bharatpur","Biratnagar","Birgunj","Butwal","Dhangadhi","Dharan","Hetauda","Kathmandu","Kirtipur🏠","Lalitpur","Pokhara"]
+export const AUS_STATE=["All","NSW","Qld","SA","Tas","Vic","WA"];
+export const NEPCITY=["All","Bhaktapur","Bharatpur","Biratnagar","Birgunj","Butwal","Dhangadhi","Dharan","Hetauda","Kathmandu","Kirtipur","Lalitpur","Pokhara"]
 
 
 export const STATE_CITY_DICT ={
