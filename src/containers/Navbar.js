@@ -11,51 +11,60 @@ class NavBar extends Component{
       e.preventDefault()
       console.log("logging off")
       this.props.logout()
-      
-  }  
+
+
+  }
 
   render(){
     console.log("after this")
     console.log(this.props)
     return (
        <nav className="navbar navbar-expand fixed-top">
-        <div className = "container-fluid"> 
+
+        <div className = "container-fluid" style={{fontFamily:"Bungee Inline",fontSize:"20px"}}>
             <Link to = "/" className="navbar-brand">
                  <img src={Logo} style={{width: '60px', height: '60px'}}/>
             </Link>
 
             {this.props.currentUser.isAuthenticated ? (
-                      <ul className="nav navbar-nav navbar-right">   
+                      <ul className="nav navbar-nav navbar-right collapse-lg" style={{ paddingTop: "15px"}}>
                       <li>
                          <Link to ={`/users/${this.props.currentUser.user.id}`}>Profile</Link>
                       </li>
-
                       <li>
                                 <a style={
                                     {color:"#fff"}
-                                } onClick ={this.logout}>Logout</a>
+                                } onClick ={this.logout}>
+                               <Link to ={`/login`}>Logout</Link>
+
+                                </a>
                       </li>
 
                       </ul>
 
             ):
-        
-            <ul className="nav navbar-nav navbar-right">
-                
-                <li>
-                    <Link to ="/login">Log in</Link>
-                </li>
 
-                <li>
-                    <Link to ="/signup">Sign Up</Link>
-                </li>
-            </ul>
+                        <ul className="nav navbar-nav navbar-right"  style={{ paddingTop: "15px"}}>
+                            <li>
+                                <Link to ="/login">Log in</Link>
+                            </li>
 
-            
+                            <li>
+                                <Link to ="/signup">Sign Up</Link>
+                            </li>
+                        </ul>
+
+
 
             }
         </div>
+
        </nav>
+
+
+
+
+
     )
   }
 }

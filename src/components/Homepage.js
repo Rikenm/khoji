@@ -67,11 +67,11 @@ return(
 
 
                        <Popup />
-                       <Navbar /> 
+                       <Navbar />
 
                        <div className="stateandtable">
-                        <div className="stateSelected">
-                        <div className="block1">You are currently checking listings at: </div>
+                        <div className="stateSelected" style={{fontFamily:'Bungee Inline',fontSize:"15px"}}>
+                        <div className="block1" >You are currently checking listings at :  </div>
                         <div className="block2" onClick={clicked2}>
                         {first_visit?
                         JSON.parse(first_visit).country !== "World"?
@@ -99,7 +99,7 @@ return(
 
 
      <div className="stateandtable">
-                        <div className="stateSelected">
+                        <div className="stateSelected" style={{fontFamily:'Bungee Inline',fontSize:"15px"}}>
                         <div className="block1">You are currently checking listings at: </div>
                         <div className="block2" onClick={clicked2}>{first_visit?
                         JSON.parse(first_visit).country !== "World"?

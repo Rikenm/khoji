@@ -77,11 +77,11 @@
     left: 30%;
     font-size: 90%;
     font-weight: 300;
-    font-family:inherit;
-    background-color: rgb(240,240,240,0.3);
+    font-family:Abel;
+
     overflow-x: hidden;
     white-space: pre-line;
-    background-color: rgb(240,240,240);
+    background-color: #ecf2f9;
     padding: 25px;
     margin: 0% 0% 0% -4.8%;
 

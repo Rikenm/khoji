@@ -57,36 +57,37 @@ export const CategoryList = (props)=>{
 
     return(
 
-    <div className="fatherTable">
+    <div className="fatherTable" >
 
-    <div className="table1">
-    <Table whichState={whichState} data={table1Data()}/>
-    </div>
+          <div className="table1">
+          <Table whichState={whichState} data={table1Data()}/>
+          </div>
 
-    <div className="table2">
-    <Table whichState={whichState} data={table2Data()}/>
-    </div>
+          <div className="table2">
+          <Table whichState={whichState} data={table2Data()}/>
+          </div>
 
-    <div className="table3">
-    <Table whichState={whichState} data={table3Data()}/>
-    </div>
+          <div className="table3 ">
+          <Table whichState={whichState} data={table3Data()}/>
+          </div>
 
-    <div className="table4">
-    <Table whichState={whichState} data={table4Data()}/>
-    </div>
 
-    <div className="table5">
-    <Table whichState={whichState} data={table5Data()}/>
-    </div>
 
-    <button type = "button"
-    onClick = {clicked}
+          <div className="table4">
+          <Table whichState={whichState} data={table4Data()}/>
+          </div>
 
-    className="postButton">
+          <div className="table5">
+          <Table whichState={whichState} data={table5Data()}/>
+          </div>
 
-        Post Your Listing
-        </button>
-        
+          <button type = "button"
+          onClick = {clicked}
+          className="postButton" style={{fontFamily:"Bungee Inline",fontSize:"15px",backgroundColor:"black"}}>
+              Post Your Listing
+              </button>
+
+
     </div>
 
 

@@ -4,7 +4,7 @@
 media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad05f488
 
 */
-/* 
+/*
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
 
@@ -16,10 +16,6 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
 
 @media (min-width: 1281px) {
 
-
-    
-    
-   
     .table1{
         position: absolute;
         left: 30px;
@@ -32,18 +28,13 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         position: absolute;
         left: 30px;
         top: 495px;
-        
-
     }
 
     .table3{
-
-        width: 40%;
-       
+        width: 50%;
         position: absolute;
-        right: 30%;
-       top: 147px
-       
+        right: 25%;
+        top: 147px
     }
 
     .table4{
@@ -51,17 +42,13 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         position: absolute;
         right: 2%;
        top: 147px
-       
-
     }
 
     .table5{
-
         width: 320px;
         position: absolute;
         right: 2%;
         top: 495px;
-
 
     }
 
@@ -73,7 +60,6 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         position: absolute;
         top: 90%;
         right: 43%;
-
         width: 241px;
         height: 75px;
 
@@ -87,25 +73,25 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
     .stateSelected{
         position: absolute;
         top: 120px;
-        text-align:center; 
+        text-align:center;
     }
 
-    
+
 
     .block1,.block2{
         display:inline;
     }
-    
-    
-   
-    
+
+
+
+
   }
-  
-  /* 
+
+  /*
     ##Device = Laptops, Desktops
     ##Screen = B/w 1025px to 1280px
   */
-  
+
   @media (min-width: 1025px) and (max-width: 1280px) {
     .table1{
         position: absolute;
@@ -119,18 +105,16 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         position: absolute;
         left: 30px;
         top: 495px;
-        
+
 
     }
 
     .table3{
-
         width: 30%;
-       
         position: absolute;
         right: 35%;
        top: 147px
-       
+
     }
 
     .table4{
@@ -138,7 +122,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         position: absolute;
         right: 2%;
        top: 147px
-       
+
 
     }
 
@@ -164,36 +148,36 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         height: 75px;
 
 
+
     }
 
     .nav{
-
         height: 80px;
     }
     .stateSelected{
         position: absolute;
         top: 120px;
-        text-align:center; 
+        text-align:center;
     }
 
-    
+
 
     .block1,.block2{
         display:inline;
     }
-    
-    
 
-   
-  
-    
+
+
+
+
+
   }
-  
-  /* 
+
+  /*
     ##Device = Tablets, Ipads (portrait)
     ##Screen = B/w 768px to 1024px
   */
-  
+
   @media (min-width: 768px) and (max-width: 1024px) {
 
 
@@ -210,18 +194,18 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         position: absolute;
         left: 3%;
         top: 495px;
-        
+
 
     }
 
     .table3{
 
         width: 50%;
-       
+
         position: absolute;
         left: 45%;
        top: 147px
-       
+
     }
 
     .table4{
@@ -229,7 +213,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         position: absolute;
         left: 3%;
         top: 850px;
-       
+
 
     }
 
@@ -265,58 +249,58 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
 
     .stateSelected{
         position: absolute;
-        top: 120px; 
+        top: 120px;
     }
 
     .stateSelected{
         position: absolute;
         top: 120px;
-        text-align:center; 
+        text-align:center;
     }
 
-    
+
 
     .block1,.block2{
         display:inline;
     }
-    
 
-   
 
-    
-    
-    
-    
-    
 
-    
+
+
+
+
+
+
+
+
   }
-  
-  /* 
+
+  /*
     ##Device = Tablets, Ipads (landscape)
     ##Screen = B/w 768px to 1024px
   */
-  
+
   @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
 
-   
-    
+
+
   }
-  
-  /* 
+
+  /*
     ##Device = Low Resolution Tablets, Mobiles (Landscape)
     ##Screen = B/w 481px to 767px
   */
-  
+
   @media (min-width: 481px) and (max-width: 767px) {
-    
-    
+
+
     .table1{
         position: relative;
         left: 30px;
         top: 147px;
         width: 80%;
-        
+
     }
 
     .table2{
@@ -324,7 +308,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         position: relative;
         left: 30px;
         top: 172px;
-        
+
 
     }
 
@@ -341,7 +325,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         position: relative;
         left: 30px;
         top: 232px;
-       
+
 
     }
 
@@ -367,7 +351,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         width: 45%;
         height: 8%;
 
-        
+
 
 
 
@@ -378,51 +362,51 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         height: 50px;
     }
 
-   
 
-    
-    
+
+
+
 
     .stateSelected{
         position: absolute;
         top: 120px;
-        text-align:center; 
+        text-align:center;
     }
 
-    
+
 
     .block1,.block2{
         display:inline;
     }
-    
-
-    
 
 
-   
-    
-    
 
-    
-    
-   
-    
+
+
+
+
+
+
+
+
+
+
   }
-  
-  /* 
+
+  /*
     ##Device = Most of the Smartphones Mobiles (Portrait)
     ##Screen = B/w 320px to 479px
   */
-  
+
   @media (min-width: 320px) and (max-width: 480px) {
-    
+
     .table1{
         position: relative;
         left: 30px;
         width: 80%;
         top: 147px;
-        
-        
+
+
     }
 
     .table2{
@@ -430,7 +414,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         position: relative;
         left: 30px;
         top: 172px;
-        
+
 
     }
 
@@ -447,7 +431,7 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         position: relative;
         left: 30px;
         top: 232px;
-       
+
 
     }
 
@@ -469,13 +453,13 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
         position: absolute;
         margin-top: 10%;
         top: 2050px;
-        
+
         left: 23%;
 
         width: 55%;
         height: 70px;
 
-        
+
 
 
 
@@ -493,18 +477,18 @@ media queries derived from : https://gist.github.com/gokulkrishh/242e68d1ee94ad0
     .stateSelected{
         position: absolute;
         top: 120px;
-        text-align:center; 
+        text-align:center;
     }
 
-    
+
 
     .block1,.block2{
         display:inline;
     }
-    
 
-   
-    
-    
-    
+
+
+
+
+
   }
