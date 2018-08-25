@@ -2,60 +2,55 @@ import React from "react"
 import queryString from  'query-string';
 import ListingList from "../containers/ListingList"
 import Navbar from "../containers/Navbar"
-import MenuItem from "@material-ui/core/MenuItem";
+import ListControl from "../containers/listControl"
 import "../style/listitemstyle.css"
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
 
-const ListingListTimeLine = (props) => {
 
+
+const ListingListTimeLine = (props) =>  {
+
+    
+  
     const {match} = props
     let queryParams = queryString.parse(props.location.search)
 
     let params = match.params
+
+    
+
+    if (! queryParams.location|| ! queryParams.search||! queryParams.secondary){
+     props.history.push("/")
+     return(<div/>)
+    }
+
+    if(!params.subcategory){
+      params.subcategory = "All" 
+    }
+    
+
 
     return(
         <div className ="listing-page">
 
    
           
-            {/* <Navbar/>  */}
-            <FormControl required  color="secondary">
-              <InputLabel htmlFor="age-simple">Category</InputLabel>
-              <Select color="secondary"
-                
-                name="category"
-                inputProps={{
-                  name: "category",
-                  id: "category-simple"
-                }}
-                
-              >
-                
-                <MenuItem >Hello</MenuItem>
-                <MenuItem >Hello2</MenuItem>
-                
-                )
-                
-            
-                
-              
-
-              </Select>
-              {/* <FormHelperText>Required</FormHelperText> */}
-            </FormControl>
+            <Navbar/> 
+           
 
             
            <div className="list"> 
          
                 
                     <div className="title">
-                            Category:
-                            {params.category}
-                            {params.subcategory?"> "+
+                            {/* Select:  */}
+                            <ListControl queryParameters={queryParams}params={params}{...props}/> 
+                            
+                            {/* {params.category} */}
+                            
+                            {/* {params.subcategory?"> "+
                             params.subcategory
-                            :<div/>}
+                            
+                            :<div/>} */}
                     </div>
 
 
@@ -69,6 +64,7 @@ const ListingListTimeLine = (props) => {
 
         </div>
     )
+ 
 }
 
 
