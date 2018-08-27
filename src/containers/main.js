@@ -7,7 +7,7 @@ import AuthForm from "../components/AuthForm";
 import {authUser} from "../store/actions/auth";
 import {removeError, addError,facebookError,facebookremoveError} from "../store/actions/error";
 import {firstState} from "../store/actions/checkFirstTime"
-import withAuth from "../HOC/withAuth"
+// import withAuth from "../HOC/withAuth"
 // import {ListingForm} from "../" //where is listing
 import  Snackbar from "../util/snackbar/snackbar";
 import PostForm from "../components/PostForm";
@@ -143,7 +143,25 @@ return(
              />
 
 
-             <Route exact path ="/listing/:category(Community|Services|Jobs|Housing|For Sale)/:subcategory?"  {...props}  component={ListingListTimeLine}/>
+             <Route exact path ="/listing/:category(Community|Services|Jobs|Housing|For Sale)/:subcategory?"  
+             render = {
+                 props => 
+                 <div>
+                 <ListingListTimeLine {...props} {...post} />
+                 {
+
+                    errors.message !== null? <Snackbar message= "Nothing to see here."  />:<div/>
+
+                    }
+
+                 </div>
+
+
+             }
+             
+             
+            //  component={ListingListTimeLine}
+            />
 
              <Route exact path = "/post/:postid" {...post} component={PostPage}/>
 

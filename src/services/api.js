@@ -1,6 +1,7 @@
 import axios from "axios";
 import {logout} from "../store/actions/auth"
 import {configureStore} from "../store/index";
+import {URL} from "../util/constant/url"
 
 
 //
@@ -117,7 +118,7 @@ function doReAuth(){
            
                 const refreshToken = localStorage.getItem("refreshToken")   
                 setTokenHeader(refreshToken)  
-                axios["post"]("http://localhost:5012/api/v1/accesstoken").then(res=>{
+                axios["post"](URL+"/api/v1/accesstoken").then(res=>{
         
                    //add try catch here
                    

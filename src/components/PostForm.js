@@ -81,6 +81,37 @@ class VerticalLinearStepper extends React.Component {
 
 }
 
+  verify = (step) =>{
+
+     
+
+     switch(step){
+       case 0:
+         return (this.state.category && this.state.subcategory? false: true)
+
+       case 1:
+         if(this.state.country === "Nepal"){
+          return this.state.country && this.state.city? false: true
+         }else{
+          return this.state.country && this.state.state &&this.state.city? false: true
+         }
+        
+
+
+       case 2:
+       return this.state.title && this.state.description? false: true
+
+
+       case 3:
+       return this.state.contact? false: true
+
+
+       default:
+         return false
+
+     }
+  }
+
 
 
 
@@ -106,10 +137,21 @@ componentWillUnmount(){
 
 
   handleChange = event => {
+    if(event.target.name === "category"){
+      this.setState({
+        [event.target.name]: event.target.value,
+                             subcategory: "",
+                          
+      })
+
+    }else{
     this.setState({ [event.target.name]: event.target.value });
+    }
   };
 
   handleLocationChange = event => {
+
+    
 
     if (event.target.value === "Nepal" ){
       this.setState({
@@ -423,6 +465,7 @@ componentWillUnmount(){
 
                      <Button
                         variant="contained"
+                        disabled = {this.verify(activeStep)}
                         color="primary"
                         onClick={this.handleNext}
                         className={classes.button}

@@ -1,6 +1,7 @@
 import {apiCall,apiCallNoReAuth} from "../../services/api"
-import {addError} from "./error";
+import {addError,removeError} from "./error";
 import {LOAD_POST} from "../actionTypes"
+import {URL} from "../../util/constant/url"
 
 export const loadPost = (post) => {
      
@@ -14,7 +15,7 @@ export const loadPost = (post) => {
 
 export const fetchPost = (postid) =>{
     return dispatch =>{
-            return apiCallNoReAuth("GET",`http://localhost:5012/api/v1/post/${postid}`)
+            return apiCallNoReAuth("GET",URL+`/api/v1/post/${postid}`)
             .then((res)=>{
                    
                    dispatch(loadPost(res))
@@ -23,6 +24,9 @@ export const fetchPost = (postid) =>{
             }).catch(err=>{
                 // dispatch(addError(err.message))
                 dispatch(addError("Error occured"))
+                setTimeout(() => {
+                    dispatch(removeError())
+                  }, 2000)
             })
     }
 
@@ -34,7 +38,7 @@ export const newPost = (data) =>{
     return (dispatch) =>{
          //new post posting  
      return new Promise((resolve,reject)=>{  
-        return apiCall("post","http://localhost:5012/api/v1/createpost",data)
+        return apiCall("post",URL+"/api/v1/createpost",data)
         .then(res => {
              console.log(res)
             try {
@@ -43,6 +47,10 @@ export const newPost = (data) =>{
             }catch(err){
                 
                 dispatch(addError(err?err:"Error occured")) 
+                setTimeout(() => {
+                    dispatch(removeError())
+                  }, 2000)
+                
                 
                 reject(err) 
             }
@@ -56,6 +64,9 @@ export const newPost = (data) =>{
         })
         .catch(err => {
             dispatch(addError("Error occured")) 
+            setTimeout(() => {
+                dispatch(removeError())
+              }, 2000)
             reject(err) 
         })
 

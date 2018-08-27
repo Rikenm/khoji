@@ -17,6 +17,10 @@ export function facebookError() {
 
 
         dispatch(addError("Facebook Error"))
+        setTimeout(() => {
+            dispatch(removeError())
+          }, 2000)
+
     }
 
 

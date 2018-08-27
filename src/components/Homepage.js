@@ -36,6 +36,8 @@ const Homepage = (props) => {
 
       Popup.plugins().prompt("", "Type your name", function(country,state) {
 
+        console.log("country-state",country,state)
+
       //all right except when no update
       if (country == null){
         country = "USA"

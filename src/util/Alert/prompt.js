@@ -3,10 +3,11 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import {USA_STATE_LIST} from "../constant/statecity"
+
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import "../../style/popupstyling.css"
+import {STATE_CITY_DICT} from "../constant/statecity"
 
 
 /** The prompt content component */
@@ -45,11 +46,14 @@ class Prompt extends React.Component {
     
       this.props.onChange(this.state.country?this.state.country:"USA",this.state.state?this.state.state:"All");
 
-      } else {
+      } else if(this.state.country === "Nepal"){
           
         this.props.onChange(this.state.country,this.state.city?this.state.city:"All");
 
-      } 
+      } else{
+
+        this.props.onChange(this.state.country,this.state.state?this.state.state:"All");
+      }
 
 
     }
@@ -64,6 +68,32 @@ class Prompt extends React.Component {
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
+  handleLocationChange = event => {
+
+    if (event.target.value === "Nepal" ){
+      this.setState({
+        state:"NEP"
+      })
+    }
+
+    if (event.target.name === "country") {
+      this.setState({ [event.target.name]: event.target.value,
+                             state:"",
+                             city:""
+
+      });
+    }else if (event.target.name === "state"){
+
+      this.setState({ [event.target.name]: event.target.value,
+        city:""
+
+      })
+    }else{
+      this.setState({ [event.target.name]: event.target.value})
+    }
+
+   };
 
 
   render() {
@@ -84,7 +114,7 @@ class Prompt extends React.Component {
           <InputLabel htmlFor="age-required">Country</InputLabel>
           <Select
             value={this.state.country}
-            onChange={this.handleChange}
+            onChange={this.handleLocationChange}
             inputProps={{
               name: "country",
               id: "country-simple"
@@ -104,45 +134,33 @@ class Prompt extends React.Component {
           </Select>
         </FormControl>
 
-       { (this.state.country === "USA")?<FormControl className={classes.formControl}>
-          <InputLabel htmlFor="age-required">State</InputLabel>
-          <Select
-            value={this.state.state}
-            onChange={this.handleChange}
-            inputProps={{
-              name: "state",
-              id: "state-required"
-            }}
-          >
-            <MenuItem value="All">
-              <em>All</em>
-            </MenuItem>
+           {
+            (typeof (this.state.country) != 'undefined' && this.state.country) ?
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="age-simple">{this.state.country=="Nepal"?"City":"State"}</InputLabel>
+              <Select
+                value={(this.state.country=="USA" || this.state.country=="Australia") ? this.state.state: this.state.city}
+                onChange={this.handleLocationChange}
+                name="age"
+                inputProps={{
+                  name: (this.state.country=="USA" || this.state.country=="Australia") ? "state": "city" ,
+                  id: "age-simple"
+                }}
+                className={classes.selectEmpty}
+              >
+               {
+                  STATE_CITY_DICT[this.state.country].map((item)=>{
+                     return <MenuItem value={item}>{item}</MenuItem>
 
-             {USA_STATE_LIST.map((state)=>(
-               <MenuItem key={state} value={state}>{state}</MenuItem>
 
-             ))}
-            
-            
-          </Select>
-        </FormControl>: <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="age-simple">City</InputLabel>
-          <Select
-            value={19}
-            inputProps={{
-              name: "age",
-              id: "age-simple"
-            }}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </FormControl>
-        }
+
+                })
+
+              }
+              </Select>
+              
+            </FormControl> :<div/>
+           }
 
        
       </div>

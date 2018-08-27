@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {apiCallNoReAuth} from "../services/api"
 import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
+import {URL} from "../util/constant/url"
 
 
 class NewUser extends Component {
@@ -30,7 +31,7 @@ class NewUser extends Component {
         
         this.setState({ isLoading: false });
 
-        apiCallNoReAuth("get", `http://localhost:3000/api/v1/token/${this.props.param}`).then(
+        apiCallNoReAuth("get", URL+`/api/v1/token/${this.props.param}`).then(
             res=>{
             
             this.setState({
@@ -53,7 +54,7 @@ class NewUser extends Component {
 
         if (this.state.username){
             // do api call 
-            apiCallNoReAuth("get", `http://localhost:3000/api/v1/validate/${this.state.username}`).then(
+            apiCallNoReAuth("get", URL+`/api/v1/validate/${this.state.username}`).then(
             res=>{
             
             this.setState({

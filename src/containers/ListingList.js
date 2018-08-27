@@ -8,6 +8,10 @@ import "../style/listitemstyle.css"
 
 
 class ListingList extends Component{
+
+
+
+    
    
     componentDidMount(){
         console.log("Mounting")
@@ -65,6 +69,29 @@ class ListingList extends Component{
         
     }
 
+    NextClick= (e) =>{
+
+        const {queryParameters,params} = this.props
+
+        if ((params.subcategory) === "All"){
+
+            this.props.history.push({
+                pathname: `/listing/${params.category}`,
+                search: `?location=${queryParameters.location}&secondary=${queryParameters.secondary}&search=${parseInt(queryParameters.search)+1}`
+            })
+
+
+        }else{
+        this.props.history.push({
+            pathname: `/listing/${params.category}/${params.subcategory}`,
+            search: `?location=${queryParameters.location}&secondary=${queryParameters.secondary}&search=${parseInt(queryParameters.search)+1}`
+        })
+    }
+
+
+       
+    }
+
    
     render(){
          const {listings} = this.props
@@ -83,7 +110,7 @@ class ListingList extends Component{
           
 
                      
-                var listingList = (listings.length != 0 )?
+                var listingList = (listings.length !== 0 )?
 
                   
                     
@@ -92,7 +119,11 @@ class ListingList extends Component{
 
 
 
-                        return  <ListingItem  key ={m.id} id={m.id} date={getDate(m.date)} title={m.title} location={m.country} city={m.city}  state={m.state}username="Riken"/>
+                        return ( <div>
+                            <ListingItem  key ={m.id} id={m.id} date={getDate(m.date)} title={m.title} location={m.country} city={m.city}  state={m.state}username="Riken"/>
+                            
+            
+                            </div>)
                     })
 
                 
@@ -106,7 +137,12 @@ class ListingList extends Component{
           
           
           {listingList}
-            
+          <br/>
+          {(listings.length !== 0)  ? <button
+                            disabled = {listings.length !== 21 }
+                            onClick={this.NextClick}
+          >Next</button> :<div/>}
+                        
          </List>
         )
     }

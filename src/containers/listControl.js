@@ -79,11 +79,24 @@ class ListControl extends Component {
 
         this.setState({[event.target.name]:event.target.value})
 
-        this.props.history.push({
+        if ((event.target.value) === "All"){
+
+          this.props.history.push({
+            pathname: `/listing/${this.state.category}`,
+            search: `?location=${this.state.country}&secondary=${this.state.secondary}&search=1`
+        })
+       }
+       else{
+
+          this.props.history.push({
             pathname: `/listing/${this.state.category}/${event.target.value}`,
             search: `?location=${this.state.country}&secondary=${this.state.secondary}&search=1`
         })
        }
+
+        }
+
+        
 
       
        

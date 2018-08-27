@@ -12,7 +12,7 @@ import {firstState} from "../store/actions/checkFirstTime"
 
 const store = configureStore()
 
-// localStorage.setItem("first_visit",JSON.stringify({country:"World",state:"World"}))
+localStorage.setItem("first_visit",JSON.stringify({country:"USA",state:"All"}))
 
 if(localStorage.accessToken && localStorage.refreshToken && localStorage.userInfo){
   setAuthorizationToken(localStorage.accessToken)
@@ -26,7 +26,7 @@ if(localStorage.accessToken && localStorage.refreshToken && localStorage.userInf
       console.log("first_visit_firstopen",localStorage.getItem("first_visit"))
       if (localStorage.getItem("first_visit") === null){
            
-            localStorage.setItem("first_visit",JSON.stringify({country:"World",state:"World"}))
+            localStorage.setItem("first_visit",JSON.stringify({country:"USA",state:"All"}))
       }  
       const whichState = JSON.parse(localStorage.getItem("first_visit"));
 
@@ -40,8 +40,8 @@ if(localStorage.accessToken && localStorage.refreshToken && localStorage.userInf
 }else{
   
       if (localStorage.getItem("first_visit") === null){
-        localStorage.setItem("first_visit",JSON.stringify({country:"World",state:"World"}))
-            store.dispatch(firstState({country:"World",state:"World"}))
+        localStorage.setItem("first_visit",JSON.stringify({country:"USA",state:"All"}))
+            store.dispatch(firstState({country:"USA",state:"All"}))
       }else{
         const whichState = JSON.parse(localStorage.getItem("first_visit"));
         store.dispatch(firstState(whichState))
