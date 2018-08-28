@@ -4,28 +4,31 @@ import {fetchListings} from "../store/actions/listing";
 import ListingItem from "../components/ListingItem"
 import List from "@material-ui/core/List";
 import "../style/listitemstyle.css"
-
+import {checkParams} from "../services/validate"
+import {removeError, addError} from "../store/actions/error";
 
 
 class ListingList extends Component{
+   
+    
 
+     
 
 
     
    
     componentDidMount(){
-        console.log("Mounting")
+        console.log("Mounted")
         const {queryParameters,params} = this.props
-        // if (!queryParameters.location|| ! queryParameters.search||! queryParameters.secondary){
-        //       this.props.history.push("/")
-        // }else{
+        
+        
+      
+            this.props.fetchListings(queryParameters.location,queryParameters.secondary,queryParameters.search,params.category,params.subcategory);  //uncomment later
+       
+       
 
-          
-        this.props.fetchListings(queryParameters.location,queryParameters.secondary,queryParameters.search,params.category,params.subcategory);  //uncomment later
 
-
-        console.log("test props for mount",this.props)
-        //  }
+   
 
          
     }
@@ -34,10 +37,11 @@ class ListingList extends Component{
 
         if(this.props.queryParameters.location === prevProps.queryParameters.location && this.props.queryParameters.search === prevProps.queryParameters.search && this.props.queryParameters.secondary === prevProps.queryParameters.secondary && this.props.params.category === prevProps.params.category &&  this.props.params.subcategory === prevProps.params.subcategory  && this.props.listings !== prevProps.listings){
             console.log("just updating here",this.props,prevProps)
+           
             
         }else {
 
-    
+            
 
    
         console.log("calling")
@@ -47,6 +51,8 @@ class ListingList extends Component{
        
           
         this.props.fetchListings(queryParameters.location,queryParameters.secondary,queryParameters.search,params.category,params.subcategory);  //uncomment later
+
+        
    
     }
 
@@ -71,7 +77,7 @@ class ListingList extends Component{
 
     NextClick= (e) =>{
 
-        const {queryParameters,params} = this.props
+        const {queryParameters,params,addError} = this.props
 
         if ((params.subcategory) === "All"){
 
@@ -155,8 +161,7 @@ function mapStateToProps(state){
     return{
         listings: state.list,
         whichState: state.firstStateReducer.whichState,
-        errors: state.errors
     }
 }
 
-export default connect(mapStateToProps,{fetchListings})(ListingList)
+export default connect(mapStateToProps,{fetchListings,addError})(ListingList)

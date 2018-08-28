@@ -53,3 +53,27 @@ export const Category_LIST = ["Community","Services","Jobs","Housing","For sale"
    
        }
 
+
+       const Community = ["All","Activities","Lost","Events","Artists","Volunteer"];
+       const Services = ["All","Mechanics","Tutor","Electronic Repair","Real Estate","Volunteer"];
+       const Jobs = ["All","IT","Software Engineering","Fast Food","Cashier","Nanny","Waiter","Government Jobs","Retail","Others"]
+       const Housing = ["All","Rent","Single Room","Double Room","Apt","Basement"];
+       const For_Sale = ["All","Electronics","Clothing","Books","Barter","Others"];
+
+
+       
+       export const Sub_Category_DICT_ALL = {
+
+        "Community":Community ,
+
+        "Services": Services,
+
+        "Jobs":  Jobs ,
+
+        "Housing": Housing,
+
+        "For sale": For_Sale 
+       }
+   
+       
+

@@ -4,7 +4,7 @@ import ListingList from "../containers/ListingList"
 import Navbar from "../containers/Navbar"
 import ListControl from "../containers/listControl"
 import "../style/listitemstyle.css"
-import  Snackbar from "../util/snackbar/snackbar";
+import {checkParams} from "../services/validate"
 
 
 
@@ -30,6 +30,12 @@ const ListingListTimeLine = (props) =>  {
     if(!params.subcategory){
       params.subcategory = "All" 
     }
+    console.log("current",queryParams.location,queryParams.secondary,queryParams.search,params.category,params.subcategory)
+    if(!checkParams(queryParams.location,queryParams.secondary,queryParams.search,params.category,params.subcategory)){
+        props.history.push("/")
+        return(<div/>)
+    }
+    
     
 
 

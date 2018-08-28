@@ -12,13 +12,22 @@ export const loadListings = listings => ({
 
 export const fetchListings = (location,state="All",page,category,subcategory="All") =>{
     var city='';
+    var cat_subCat = "";
     if (location === "Nepal"){
            city = state
            state = ""
     }
+    if(subcategory === "All"){
+        cat_subCat = category
+       
+    }else{
+        cat_subCat = category+"/"+ subcategory
+
+    }
+
     const offset = 20* (page-1)
     return dispatch =>{
-            return apiCallNoReAuth("GET",URL+`/api/v1/posts/${category}/${subcategory}?country=${location}&state=${state}&city=${city}&size=${20}&offset=${offset}`)
+            return apiCallNoReAuth("GET",URL+`/api/v1/posts/`+cat_subCat+`?country=${location}&state=${state}&city=${city}&size=${20}&offset=${offset}`)
             .then((res)=>{
                 console.log("list",res)
                     dispatch(loadListings(res))
