@@ -10,9 +10,6 @@ import {removeError, addError} from "../store/actions/error";
 
 class ListingList extends Component{
    
-    
-
-     
 
 
     
