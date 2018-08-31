@@ -96,6 +96,8 @@ export default class Facebook extends Component{
                 appId="302220027200609"
                 autoLoad={false}
                 fields="name,email"
+                isMobile={true}
+                disableMobileRedirect={true}
                 callback={this.facebookClick} 
                 onFailure ={this.onerror}
                 

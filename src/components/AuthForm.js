@@ -218,7 +218,10 @@ class AuthForm extends Component{
 
                                             <div className="facebookButton">
 
-                                                <Facebook  addError={addError} {...this.props}/> {//facebookClick = {this.facebookClick}/>
+                                                <Facebook 
+                                                
+                                               
+                                                addError={addError} {...this.props}/> {//facebookClick = {this.facebookClick}/>
                                                 }
                                             </div>
 
