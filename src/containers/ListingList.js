@@ -4,8 +4,8 @@ import {fetchListings} from "../store/actions/listing";
 import ListingItem from "../components/ListingItem"
 import List from "@material-ui/core/List";
 import "../style/listitemstyle.css"
-import {checkParams} from "../services/validate"
-import {removeError, addError} from "../store/actions/error";
+
+import { addError} from "../store/actions/error";
 
 
 class ListingList extends Component{
@@ -22,10 +22,6 @@ class ListingList extends Component{
       
             this.props.fetchListings(queryParameters.location,queryParameters.secondary,queryParameters.search,params.category,params.subcategory);  //uncomment later
        
-       
-
-
-   
 
          
     }

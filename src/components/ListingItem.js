@@ -8,7 +8,7 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import "../style/listitemstyle.css"
 
 
-const ListingItem = ({date,id,username,title,location,city,state}) => {
+const ListingItem = ({date,id,title,location,city,state}) => {
 
     //fetch
 

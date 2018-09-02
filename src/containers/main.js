@@ -49,7 +49,7 @@ return(
             <Route exact path="/signup"
                 render= { props =>
                     <div>
-                   {currentUser.isAuthenticated == false ? <AuthForm
+                   {currentUser.isAuthenticated === false ? <AuthForm
                     errors ={errors}
                     removeError = {removeError}
                     addError = {facebookError}
@@ -75,7 +75,7 @@ return(
             <Route exact path="/login"
                 render= { props =>
                       <div>
-                          {currentUser.isAuthenticated == false ?
+                          {currentUser.isAuthenticated === false ?
                        <AuthForm
                        errors ={errors}
                        removeError = {removeError}

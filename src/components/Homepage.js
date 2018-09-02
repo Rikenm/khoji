@@ -116,39 +116,7 @@ return(
 )
 
 }
-// else{
-// return(
-//         <div className="formbackground">
-//        <div className="firstCard">
 
-
-
-//            <h1 className="stateheading"> State </h1>
-
-//            <input className="stateinput" type="text"/> <br/>
-
-//             <button onClick={stateButtonClicked}  className="stateButton">Go</button>
-
-//             <br />
-//           <div className="footnotes">
-//             Free listing <br/>
-//            <div className="clickableDiv"onClick={clicked}> Login Required</div><br/>
-//            </div>
-
-
-
-
-
-//       </div>
-// </div>  )
-
-//         // return(
-//         //         <div>
-//         //                 <Navbar/>
-//         //                 Already Logged in</div>
-//         // )
-
-// }
 
 
 

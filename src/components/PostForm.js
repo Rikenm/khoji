@@ -267,15 +267,15 @@ componentWillUnmount(){
             </FormControl>
            <br/>
            {
-            (typeof (this.state.country) != 'undefined' && this.state.country) ?
+            (typeof (this.state.country) !== 'undefined' && this.state.country) ?
             <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="age-simple">{this.state.country=="Nepal"?"City":"State"}</InputLabel>
+              <InputLabel htmlFor="age-simple">{this.state.country==="Nepal"?"City":"State"}</InputLabel>
               <Select
-                value={(this.state.country=="USA" || this.state.country=="Australia") ? this.state.state: this.state.city}
+                value={(this.state.country==="USA" || this.state.country==="Australia") ? this.state.state: this.state.city}
                 onChange={this.handleLocationChange}
                 name="age"
                 inputProps={{
-                  name: (this.state.country=="USA" || this.state.country=="Australia") ? "state": "city" ,
+                  name: (this.state.country==="USA" || this.state.country==="Australia") ? "state": "city" ,
                   id: "age-simple"
                 }}
                 className={classes.selectEmpty}
@@ -295,7 +295,7 @@ componentWillUnmount(){
            }
             <br/>
 
-          {this.state.country == "USA" || this.state.country == "Australia"?
+          {this.state.country === "USA" || this.state.country === "Australia"?
           <div>
           <TextField
           label="City"
