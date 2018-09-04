@@ -487,8 +487,6 @@ componentWillUnmount(){
 
                        errors.message !== null? <Snackbar message= {errors.message}  />:<div/>
 
-
-
                     }</div>
 
       </div>

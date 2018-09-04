@@ -45,7 +45,7 @@ class Post extends Component{
                             <div className = "sidebar">
                                         <div className= "name">
                                             Name<br/>
-                                        <div className= "name-value"> Riken Maharjan </div>
+                                        <div className= "name-value"> {post.data[0].name} </div>
 
                                         </div>
 
@@ -72,16 +72,16 @@ class Post extends Component{
 
                                         <div className= "contact">
                                             Contact<br/>
-                                            <div className= "contact-value">    857-2091580  </div>
+                                            <div className= "contact-value">    857-2091580  </div> 
 
                                         </div>
-                                    <div className="low-sidebar">
+                                    {/* <div className="low-sidebar">
                                         <button className="btn-reply">
                                             Reply
                                             </button>
 
                         
-                                    </div>
+                                    </div> */}
                             </div>
 
                             <div className="body" style={{
