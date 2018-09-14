@@ -7,8 +7,6 @@ import AuthForm from "../components/AuthForm";
 import {authUser} from "../store/actions/auth";
 import {removeError, addError,facebookError,facebookremoveError} from "../store/actions/error";
 import {firstState} from "../store/actions/checkFirstTime"
-// import withAuth from "../HOC/withAuth"
-// import {ListingForm} from "../" //where is listing
 import  Snackbar from "../util/snackbar/snackbar";
 import PostForm from "../components/PostForm";
 import ListingListTimeLine from "../components/ListingListTimeLine"
@@ -29,7 +27,7 @@ const Main = props => {
 
 
 return(
-    // <div className = "container">
+    
 
 
 
@@ -97,32 +95,13 @@ return(
                  }
             />
 
-            {/* <Route exact path ="/createlisting" component={ListingForm} */}
+          
 
             />
 
             <Route exact path="/newPost"
 
-            // need Auth HOC
-
-        //     component = { withAuth(PostForm) }
-        //    ---------
-            // render = { props => {
-            //     const MyComponent = withAuth(PostForm)
-            //     return (<MyComponent {...props}></MyComponent>)
-            //      }
-
-
-            // }
-            //--------
-
-            // render = { props => {
-
-            //     return (<PostForm {...props}></PostForm>)
-            //      }
-
-
-            // }
+     
 
 
             render = { props =>
@@ -158,9 +137,6 @@ return(
 
 
              }
-             
-             
-            //  component={ListingListTimeLine}
             />
 
              <Route exact path = "/post/:postid" {...post} component={PostPage}/>
