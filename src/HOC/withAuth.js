@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 
 export default function withAuth(ComponentToBeRendered){
 
-   
+   //HOC componenet
 
     class Authenticate extends Component{
 
