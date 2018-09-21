@@ -1,4 +1,4 @@
-// for configuring the store
+
 
 import rootReducer from "./reducers"
 import {createStore, applyMiddleware, compose} from "redux";

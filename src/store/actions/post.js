@@ -36,7 +36,7 @@ export const fetchPost = (postid) =>{
 export const newPost = (data) =>{
  
     return (dispatch) =>{
-         //new post posting  
+        
      return new Promise((resolve,reject)=>{  
         return apiCall("post",URL+"/api/v1/createpost",data)
         .then(res => {
